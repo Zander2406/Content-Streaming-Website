@@ -1,0 +1,197 @@
+{% extends "website/base.html" %}
+
+{% block head %}
+    {{ block.super }}
+    <title>Gogoanime - Watch anime online HD</title>
+    <style>
+<!--        .left-elements {-->
+<!--            width: 68%;-->
+<!--        }-->
+<!--        .my-header-class {-->
+<!--            background-color: #ffc119;-->
+<!--            height: 40px;-->
+<!--            position:relative;-->
+<!--        }-->
+<!--        #recent-release-content, popular-ongoing-updates-content, recently-added-series-content {-->
+<!--            border-color: #ffc119;-->
+<!--            height: 200px;-->
+<!--        }-->
+<!--        #recent-release-nav {-->
+<!--            position: absolute;-->
+<!--            top: 50%;-->
+<!--            transform: translateY(-50%);-->
+<!--            left: 10px;-->
+<!--        }-->
+<!--        #recent-release-nav a {-->
+<!--            text-decoration: none;-->
+<!--            color: #FFF;-->
+<!--        }-->
+<!--        #content {-->
+<!--            background-color: #1b1b1b;-->
+<!--        }-->
+<!--        #right-side-panels {-->
+<!--            display: block;-->
+<!--            float: right;-->
+<!--            width: 300px;-->
+<!--        }-->
+        #content, .left-side-panels {
+            background-color: #1b1b1b;
+        }
+        .left-side-panels {
+            float: left;
+            width: 68%;
+        }
+        .right-side-panels {
+            float: right;
+            width: 30%;
+        }
+        .left-headers {
+            background-color: #ffc119;
+            height: 40px;
+            position:relative;
+        }
+        .header-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 10px;
+            font-size: 14px;
+        }
+        #recent-release-nav a {
+            text-decoration: none;
+            color: #FFF;
+        }
+        .header-pagination {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+        }
+
+
+    </style>
+{% endblock %}
+
+{% block body %}
+    <section id="content">
+
+        <section class="left-side-panels">
+
+
+            <div id="recent-release" class="left-elements">
+
+                <div id="recent-release-header" class="left-headers">
+                    <h2 id="recent-release-nav" class="header-nav">
+                        <a href="">RECENT RELEASE</a>
+                        <span style="padding: 0 10px;">|</span>
+                        <a href="">DUB</a>
+                        <span style="padding: 0 10px;">|</span>
+                        <a href="">CHINESE DUB</a>
+                    </h2>
+                    <div id="recent-release-pagination" class="header-pagination">
+                        Pagination
+                    </div>
+                </div>
+                <div id="recent-release-content" class="border-bottom border-start border-end">
+                    Main Content sdlkfksdjg;lzdfkgmd
+                    dfg;kdfkhgmdfkmgdsf
+                    gnfgkldfnhlkdflhkndf
+                    hdglnhkdfjsdggggggg
+                </div>
+
+            </div>
+
+            <div id="popular-ongoing-updates">
+
+                <div id="popular-ongoing-updates-header" class="left-headers">
+                    <h2 id="popular-ongoing-updates-nav" class="header-nav">
+                        <span>POPULAR ONGOING UPDATE</span>
+                    </h2>
+                    <div id="popular-ongoing-updates-pagination" class="header-pagination">
+                        Pagination
+                    </div>
+                </div>
+                <div id="popular-ongoing-updates-content" class="border-bottom border-start border-end">
+                    Popular Anime Episode Updates
+                    sdgsdgsfgdgdhfghfg
+                    dfg;kdfkhgmdfkmgdsf
+                    gnfgkldfnhlkdflhkndf
+                    hdglnhkdfjsdggggggg
+                </div>
+
+            </div>
+
+            <div id="recently-added-series" class="left-elements">
+
+                <div id="recently-added-series-header" class="left-headers">
+                    <h2 id="recently-added-series-nav" class="header-nav">
+                        <span>RECENTLY ADDED SERIES</span>
+                    </h2>
+                </div>
+                <div id="recently-added-series-content" class="border-bottom border-start border-end">
+                    Recently Added Series
+                    dfg;kdfkhgmdfkmgdsf
+                    gnfgkldfnhlkdflhkndf
+                    hdglnhkdfjsdgggggggdfg;kdfkhgmdfkmgdsf
+                    gnfgkldfnhlkdflhkndf
+                    hdglnhkdfjsdggggggg
+                    d
+                    d
+                    d
+                    d
+                    d
+                    d
+                    d
+                    d
+                    d
+                    d
+                    d
+                    d
+                    d
+                    d
+                    d
+                    d
+                    d
+                    d
+                    d
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="right-side-panels">
+
+
+            <div>
+                <div id="advertisement-box">
+                    Advertisement
+                </div>
+            </div>
+
+            <div>
+                <div id="top-rated-episodes">
+                    Top Rated Episodes
+                </div>
+            </div>
+
+            <div>
+                <div id="ongoing-series">
+                    Ongoing Series Names in Alphabetical Order
+                </div>
+            </div>
+
+            <div>
+                <div id="recent-seasons">
+                    Seasons
+                </div>
+            </div>
+
+
+        </section>
+
+    </section>
+
+{% endblock %}
