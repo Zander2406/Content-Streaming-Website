@@ -4,36 +4,7 @@
     {{ block.super }}
     <title>Gogoanime - Watch anime online HD</title>
     <style>
-<!--        .left-elements {-->
-<!--            width: 68%;-->
-<!--        }-->
-<!--        .my-header-class {-->
-<!--            background-color: #ffc119;-->
-<!--            height: 40px;-->
-<!--            position:relative;-->
-<!--        }-->
-<!--        #recent-release-content, popular-ongoing-updates-content, recently-added-series-content {-->
-<!--            border-color: #ffc119;-->
-<!--            height: 200px;-->
-<!--        }-->
-<!--        #recent-release-nav {-->
-<!--            position: absolute;-->
-<!--            top: 50%;-->
-<!--            transform: translateY(-50%);-->
-<!--            left: 10px;-->
-<!--        }-->
-<!--        #recent-release-nav a {-->
-<!--            text-decoration: none;-->
-<!--            color: #FFF;-->
-<!--        }-->
-<!--        #content {-->
-<!--            background-color: #1b1b1b;-->
-<!--        }-->
-<!--        #right-side-panels {-->
-<!--            display: block;-->
-<!--            float: right;-->
-<!--            width: 300px;-->
-<!--        }-->
+
         #content, .left-side-panels {
             background-color: #1b1b1b;
         }
@@ -45,7 +16,7 @@
             float: right;
             width: 30%;
         }
-        .left-headers {
+        .all-headers {
             background-color: #ffc119;
             height: 40px;
             position:relative;
@@ -69,7 +40,6 @@
             font-size: 14px;
         }
 
-
     </style>
 {% endblock %}
 
@@ -81,7 +51,7 @@
 
             <div id="recent-release" class="left-elements">
 
-                <div id="recent-release-header" class="left-headers">
+                <div id="recent-release-header" class="all-headers">
                     <h2 id="recent-release-nav" class="header-nav">
                         <a href="">RECENT RELEASE</a>
                         <span style="padding: 0 10px;">|</span>
@@ -104,7 +74,7 @@
 
             <div id="popular-ongoing-updates">
 
-                <div id="popular-ongoing-updates-header" class="left-headers">
+                <div id="popular-ongoing-updates-header" class="all-headers">
                     <h2 id="popular-ongoing-updates-nav" class="header-nav">
                         <span>POPULAR ONGOING UPDATE</span>
                     </h2>
@@ -124,7 +94,7 @@
 
             <div id="recently-added-series" class="left-elements">
 
-                <div id="recently-added-series-header" class="left-headers">
+                <div id="recently-added-series-header" class="all-headers">
                     <h2 id="recently-added-series-nav" class="header-nav">
                         <span>RECENTLY ADDED SERIES</span>
                     </h2>
@@ -165,28 +135,71 @@
         <section class="right-side-panels">
 
 
-            <div>
-                <div id="advertisement-box">
-                    Advertisement
+            <div id="advertisement-box">
+
+                <div id="advertisement-box-header" class="all-headers">
+                    <h2 id="advertisement-box-nav" class="header-nav">
+                        <span>ADVERTISEMENT</span>
+                    </h2>
                 </div>
+                <div id="advertisement-box-content" class="border-bottom border-start border-end">
+                    Advertisement Content
+                </div>
+
             </div>
 
-            <div>
-                <div id="top-rated-episodes">
-                    Top Rated Episodes
+            <div id="top-rated-episodes">
+
+                <div id="top-rated-episodes-header" class="all-headers">
+                    <h2 id="top-rated-episodes-nav" class="header-nav">
+                        <span>TOP RATED EPISODES</span>
+                    </h2>
                 </div>
+                <div id="top-rated-episodes-content" class="border-bottom border-start border-end">
+                    Top Rated Episodes Content
+                </div>
+
             </div>
 
-            <div>
-                <div id="ongoing-series">
-                    Ongoing Series Names in Alphabetical Order
+            <div id="ongoing-series">
+
+                <div id="ongoing-series-header" class="all-headers">
+                    <h2 id="ongoing-series-nav" class="header-nav">
+                        <span>ONGOING SERIES</span>
+                    </h2>
                 </div>
+                <div id="ongoing-series-content" class="border-bottom border-start border-end">
+                    Ongoing Series Content
+                </div>
+
             </div>
 
-            <div>
-                <div id="recent-seasons">
-                    Seasons
+            <div id="genres">
+
+                <div id="genres-header" class="all-headers">
+                    <h2 id="genres-nav" class="header-nav">
+                        <span>GENRES</span>
+                    </h2>
                 </div>
+                <div id="genres-content" class="border-bottom border-start border-end">
+                    Genres Content
+                </div>
+
+            </div>
+
+            <div id="recent-seasons">
+
+                <div id="recent-seasons-header" class="all-headers">
+                    <h2 id="recent-seasons-nav" class="header-nav">
+                        <span>SEASON</span>
+                    </h2>
+                </div>
+                <div id="recent-seasons-content" class="border-bottom border-start border-end" style="padding: 10px 0;">
+                    <nav id="seasons-navbar">
+                        Anime Seasons Nav
+                    </nav>
+                </div>
+
             </div>
 
 
