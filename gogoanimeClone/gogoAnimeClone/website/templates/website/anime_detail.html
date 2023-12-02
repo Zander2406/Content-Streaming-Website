@@ -1,10 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Anime Detail Page</title>
-</head>
-<body>
-    Main Body Here
-</body>
-</html>
+{% extends "website/base.html" %}
+
+{% block head %}
+    {{ block.super }}
+    <title>Anime Name at Gogoanime</title>
+    <style>
+        #content {
+            background-color: #1b1b1b;
+        }
+        .left-panels {
+            float: left;
+            width: 60%;
+        }
+        .right-panels {
+            float: right;
+            width: 30%;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <section id="content">
+
+        <section class="left-panels">
+            Left Panels
+        </section>
+
+        <section class="right-panels">
+            Right Panels
+        </section>
+
+    </section>
+{% endblock %}
