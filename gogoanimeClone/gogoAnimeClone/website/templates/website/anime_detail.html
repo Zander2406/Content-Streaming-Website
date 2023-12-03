@@ -1,32 +1,134 @@
 {% extends "website/base.html" %}
+{% load static %}
 
 {% block head %}
     {{ block.super }}
     <title>Anime Name at Gogoanime</title>
     <style>
-        #content {
+        html, body {
+            font-size: 13px;
+        }
+        #content, .left-panels, .right-panels {
             background-color: #1b1b1b;
         }
         .left-panels {
             float: left;
-            width: 60%;
+            width: 68%;
+            padding: 10px;
         }
         .right-panels {
             float: right;
-            width: 30%;
+            width: 32%;
+            padding: 10px;
+        }
+        .all-headers {
+            background-color: #ffc119;
+            height: 40px;
+            position:relative;
+        }
+        .header-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 10px;
+            font-size: 14px;
+        }
+        .heading-info {
+            text-transform: uppercase;
+            font-size: 14px;
+            color: #ffc119;
+        }
+        .info-category {
+            color: #00a651;
+            font-size: 12px;
+        }
+        .info a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 13px;
+        }
+        .plain-text {
+            font-size: 12px;
+            color: #fff;
         }
     </style>
 {% endblock %}
 
 {% block body %}
-    <section id="content">
+    <section id="content" style="width: 100%; float: left;">
 
         <section class="left-panels">
-            Left Panels
+
+            <div class="anime-info-box">
+                <div id="anime-info-header" class="all-headers">
+                    <h2 id="anime-info-nav" class="header-nav">
+                        Anime INFO
+                    </h2>
+                </div>
+                <div id="anime-info-content" class="border-bottom border-start border-end" style="float: left; width: 100%; margin: 0 20px;">
+                    <div id="anime-info">
+                        <img src="{% static 'website/placeholderimage.png' %}" alt="Anime Poster" width="320px" style="float: left; margin: 20px 0; padding-right: 15px;">
+                        <div style="float: left;">
+                            <h1 class="heading-info">Anime Name</h1>
+                            <p class="info"><span class="info-category">Type: </span><a href="/">Type</a></p>
+                            <p class="info"><span class="info-category">Plot Summary: </span><span class="plain-text">Plot Summary</span></p>
+                            <p class="info"><span class="info-category">Genre: </span><a>Genre</a></p>
+                            <p class="info"><span class="info-category">Season: </span><a>Season</a></p>
+                            <p class="info"><span class="info-category">Status: </span><a>Status</a></p>
+                            <p class="info"><span class="info-category">Other Names: </span><span class="plain-text">Other Names</span></p>
+                        </div>
+                    </div>
+                    <div style="clear: both;"></div>
+                    <span style="width: 100%; clear: both; text-transform: uppercase;" class="border-bottom">Anime Name</span>
+                    <div>
+                        Episode List
+                    </div>
+                </div>
+            </div>
+
         </section>
 
         <section class="right-panels">
-            Right Panels
+
+            <div id="advertisement-box">
+
+                <div id="advertisement-box-header" class="all-headers">
+                    <h2 id="advertisement-box-nav" class="header-nav">
+                        <span>ADVERTISEMENT</span>
+                    </h2>
+                </div>
+                <div id="advertisement-box-content" class="border-bottom border-start border-end">
+                    Advertisement Content
+                </div>
+
+            </div>
+
+            <div>
+                <div id="recent-release-header" class="all-headers">
+                    <h2 id="recent-release-nav" class="header-nav">
+                        <span>ADVERTISEMENT</span>
+                    </h2>
+                </div>
+                <div id="recent-release-content" class="border-bottom border-start border-end">
+                    Advertisement Content
+                </div>
+            </div>
+
+            <div id="recent-seasons">
+
+                <div id="recent-seasons-header" class="all-headers">
+                    <h2 id="recent-seasons-nav" class="header-nav">
+                        <span>SEASON</span>
+                    </h2>
+                </div>
+                <div id="recent-seasons-content" class="border-bottom border-start border-end" style="padding: 10px 0;">
+                    <nav id="seasons-navbar">
+                        Anime Seasons Nav
+                    </nav>
+                </div>
+
+            </div>
+
         </section>
 
     </section>
