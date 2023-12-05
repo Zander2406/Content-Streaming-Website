@@ -51,13 +51,29 @@
             font-size: 12px;
             color: #fff;
         }
+        #content-box {
+            padding-right: 20px;
+        }
+        #anime-info {
+            margin: 20px 0;
+        }
+        h2 {
+            width: 100%;
+            clear: both;
+            text-transform: uppercase;
+            font-size: 14px;
+            color: #ffc119;
+        }
+        .info {
+            margin: 8px 0;
+        }
     </style>
 {% endblock %}
 
 {% block body %}
     <section id="content" style="width: 100%; float: left;">
 
-        <section class="left-panels">
+        <section id="content-box" class="left-panels">
 
             <div class="anime-info-box">
                 <div id="anime-info-header" class="all-headers">
@@ -65,10 +81,10 @@
                         Anime INFO
                     </h2>
                 </div>
-                <div id="anime-info-content" class="border-bottom border-start border-end" style="float: left; width: 100%; margin: 0 20px;">
+                <div id="anime-info-content" class="border-bottom border-start border-end" style="float: left; width: 100%;">
                     <div id="anime-info">
-                        <img src="{% static 'website/placeholderimage.png' %}" alt="Anime Poster" width="320px" style="float: left; margin: 20px 0; padding-right: 15px;">
-                        <div style="float: left;">
+                        <img src="{% static 'website/placeholderimage.png' %}" alt="Anime Poster" width="320px" style="float: left; padding-right: 15px; margin-left: 20px">
+                        <div style="float: left; margin-right: 20px;">
                             <h1 class="heading-info">Anime Name</h1>
                             <p class="info"><span class="info-category">Type: </span><a href="/">Type</a></p>
                             <p class="info"><span class="info-category">Plot Summary: </span><span class="plain-text">Plot Summary</span></p>
@@ -79,7 +95,7 @@
                         </div>
                     </div>
                     <div style="clear: both;"></div>
-                    <span style="width: 100%; clear: both; text-transform: uppercase;" class="border-bottom">Anime Name</span>
+                    <h2 class="border-bottom">Anime Name</h2>
                     <div>
                         Episode List
                     </div>
