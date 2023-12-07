@@ -1,11 +1,87 @@
-<!DOCTYPE html>
+{% extends "website/base.html" %}
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Episode Player</title>
-</head>
-<body>
-    Main Data
-</body>
-</html>
+
+{% block head %}
+
+    {{ block.super }}
+
+    <title>Watch Anime Name</title>
+    <style>
+        .left-side {
+            float:left;
+            width: 50%;
+        }
+        .right-side {
+            float: right;
+            width: 50%;
+        }
+        .page-layout, .page-layout-inside, .left-side, .right-side {
+            background-color: #1b1b1b;
+        }
+    </style>
+
+{% endblock %}
+
+{% block body %}
+
+    <section class="page-layout">
+
+        <section class="page-layout-inside">
+
+            <section class="left-side">
+                Media Player
+            </section>
+
+
+
+
+
+
+
+
+            <section class="right-side">
+
+                <div id="advertisement-box">
+
+                    <div id="advertisement-box-header" class="all-headers">
+                        <h2 id="advertisement-box-nav" class="header-nav">
+                            <span>ADVERTISEMENT</span>
+                        </h2>
+                    </div>
+                    <div id="advertisement-box-content" class="border-bottom border-start border-end">
+                        Advertisement Content
+                    </div>
+
+                </div>
+
+                <div id="recent-release-box">
+                    <div id="recent-release-header" class="all-headers">
+                        <h2 id="recent-release-nav" class="header-nav">
+                            <span>ADVERTISEMENT</span>
+                        </h2>
+                    </div>
+                    <div id="recent-release-content" class="border-bottom border-start border-end">
+                        Advertisement Content
+                    </div>
+                </div>
+
+                <div id="recent-seasons">
+
+                    <div id="recent-seasons-header" class="all-headers">
+                        <h2 id="recent-seasons-nav" class="header-nav">
+                            <span>SEASON</span>
+                        </h2>
+                    </div>
+                    <div id="recent-seasons-content" class="border-bottom border-start border-end" style="padding: 10px 0;">
+                        <nav id="seasons-navbar">
+                            Anime Seasons Nav
+                        </nav>
+                    </div>
+
+                </div>
+
+            </section>
+        </section>
+    </section>
+
+{% endblock %}
