@@ -7,16 +7,76 @@
 
     <title>Watch Anime Name</title>
     <style>
+        #page-layout {
+            float: left;
+            width: 100%;
+        }
+        #page-layout, .left-side, .right-side {
+            background-color: #1b1b1b;
+        }
         .left-side {
             float:left;
-            width: 50%;
+            width: 728px;
+            padding-left: 30px;
+            padding-top: 10px;
+            padding-right: 20px;
         }
         .right-side {
             float: right;
-            width: 50%;
+            width: 340px;
+            padding-right: 30px;
+            padding-top: 10px;
         }
-        .page-layout, .page-layout-inside, .left-side, .right-side {
-            background-color: #1b1b1b;
+        .all-headers {
+            background-color: #ffc119;
+            height: 40px;
+            position: relative;
+        }
+        .header-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 10px;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        .separator {
+            margin-bottom: 26px;
+        }
+        #media-player-content {
+            padding: 20px;
+        }
+        .heading-info {
+            font-size: 14px;
+            color: #ffc119;
+            padding: 0;
+            margin: 0;
+        }
+        .info-category {
+            color: #fff;
+            font-size: 12px;
+        }
+        .info a {
+            text-decoration: none;
+            color: #ffc119;
+            font-size: 12px;
+            padding-top: 5px;
+        }
+        .info {
+            margin: 0;
+        }
+        #anime-category {
+            padding-top: 5px;
+        }
+        #anime-info {
+            padding-top: 5px;
+            padding-bottom: 2px;
+        }
+        #anime-watch-note {
+            position: relative;
+            text-align: center;
+            font-size: 12px;
+            color: #ffc119;
         }
     </style>
 
@@ -24,55 +84,92 @@
 
 {% block body %}
 
-    <section class="page-layout">
-
-        <section class="page-layout-inside">
+    <section id="page-layout">
 
             <section class="left-side">
-                Media Player
+
+                <div id="media-player-box" class="separator">
+
+                    <div id="media-player-header" class="all-headers">
+                        <h2 id="media-player-nav" class="header-nav">
+                            <span>Anime Name</span>
+                        </h2>
+                    </div>
+                    <div id="media-player-content" class="border-bottom border-start border-end">
+                        <div style="margin-right: 20px;">
+                            <h1 class="heading-info">Anime Name Subbed at Gogoanime Episode 10</h1>
+                            <p id="anime-category" class="info"><span class="info-category">Category: </span><a href="/">Category</a></p>
+                            <p id="anime-info" class="info"><span class="info-category">Anime Info: </span><a href="/">Anime Info</a></p>
+                        </div>
+                        <div id="anime-watch-note">
+                            Please,
+                            <a onclick="window.location.reload();" href="javascript:void(0)" style="color: #00a651; text-decoration: none;">reload page</a>
+                             if you can't watch the video
+                        </div>
+                        <div>
+                            <video>
+                                Video Here
+                            </video>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div id="related-episodes-box" class="separator">
+
+                    <div id="related-episodes-header" class="all-headers">
+                        <h2 id="related-episodes-nav" class="header-nav">
+                            Related Episodes
+                        </h2>
+                    </div>
+                    <div id="related-episodes-content" class="border-bottom border-start border-end">
+                        Episode List
+                    </div>
+
+                </div>
+
+
             </section>
-
-
-
-
 
 
 
 
             <section class="right-side">
 
-                <div id="advertisement-box">
+                <div id="advertisement-box" class="separator" style="margin-left: 15px;">
 
-                    <div id="advertisement-box-header" class="all-headers">
+                    <div id="advertisement-box-header" class="all-headers" style="width: 300px;">
                         <h2 id="advertisement-box-nav" class="header-nav">
                             <span>ADVERTISEMENT</span>
                         </h2>
                     </div>
-                    <div id="advertisement-box-content" class="border-bottom border-start border-end">
-                        Advertisement Content
+                    <div id="advertisement-box-content" class="border-bottom border-start border-end" style="width: 300px; height: 250px;">
+                        <img src="{% static 'website/ad-banner.jpg' %}" alt="Ad Banner" width="300px" height="250px">
                     </div>
 
                 </div>
 
-                <div id="recent-release-box">
-                    <div id="recent-release-header" class="all-headers">
+                <div id="recent-release-box" class="separator" style="margin-left: 15px;">
+                    <div id="recent-release-header" class="all-headers" style="width: 300px;">
                         <h2 id="recent-release-nav" class="header-nav">
                             <span>ADVERTISEMENT</span>
                         </h2>
                     </div>
-                    <div id="recent-release-content" class="border-bottom border-start border-end">
+                    <div id="recent-release-content" class="border-bottom border-start border-end" style="width: 300px;">
                         Advertisement Content
                     </div>
                 </div>
 
-                <div id="recent-seasons">
+                <div id="recent-seasons-box" class="separator" style="margin-left: 15px;">
 
-                    <div id="recent-seasons-header" class="all-headers">
+                    <div id="recent-seasons-header" class="all-headers" style="width: 300px;">
                         <h2 id="recent-seasons-nav" class="header-nav">
                             <span>SEASON</span>
                         </h2>
                     </div>
-                    <div id="recent-seasons-content" class="border-bottom border-start border-end" style="padding: 10px 0;">
+                    <div id="recent-seasons-content" class="border-bottom border-start border-end" style="padding: 10px 0; width: 300px;">
                         <nav id="seasons-navbar">
                             Anime Seasons Nav
                         </nav>
@@ -81,7 +178,7 @@
                 </div>
 
             </section>
-        </section>
+
     </section>
 
 {% endblock %}

@@ -26,7 +26,7 @@
         .all-headers {
             background-color: #ffc119;
             height: 40px;
-            position:relative;
+            position: relative;
         }
         .header-nav {
             position: absolute;
@@ -34,6 +34,7 @@
             transform: translateY(-50%);
             left: 10px;
             font-size: 14px;
+            text-transform: uppercase;
         }
         .heading-info {
             text-transform: uppercase;
@@ -56,9 +57,6 @@
         #content-box {
             padding-right: 20px;
         }
-        #anime-info {
-            margin: 20px 0;
-        }
         h2 {
             width: 100%;
             clear: both;
@@ -69,6 +67,9 @@
         .info {
             margin: 8px 0;
         }
+        .separator {
+            margin-bottom: 26px;
+        }
     </style>
 {% endblock %}
 
@@ -77,13 +78,13 @@
 
         <section id="content-box" class="left-panels">
 
-            <div class="anime-info-box">
+            <div id="anime-info-box" class="separator">
                 <div id="anime-info-header" class="all-headers">
                     <h2 id="anime-info-nav" class="header-nav">
                         Anime INFO
                     </h2>
                 </div>
-                <div id="anime-info-content" class="border-bottom border-start border-end" style="float: left; width: 100%;">
+                <div id="anime-info-content" class="border-bottom border-start border-end" style="width: 100%; padding-top: 20px;">
                     <div id="anime-info">
                         <img src="{% static 'website/placeholderimage.png' %}" alt="Anime Poster" width="320px" style="float: left; padding-right: 15px; margin-left: 20px">
                         <div style="float: left; margin-right: 20px;">
@@ -110,7 +111,7 @@
 
         <section class="right-panels">
 
-            <div id="advertisement-box">
+            <div id="advertisement-box" class="separator">
 
                 <div id="advertisement-box-header" class="all-headers">
                     <h2 id="advertisement-box-nav" class="header-nav">
@@ -123,7 +124,7 @@
 
             </div>
 
-            <div id="recent-release-box">
+            <div id="recent-release-box" class="separator">
                 <div id="recent-release-header" class="all-headers">
                     <h2 id="recent-release-nav" class="header-nav">
                         <span>ADVERTISEMENT</span>
@@ -134,7 +135,7 @@
                 </div>
             </div>
 
-            <div id="recent-seasons">
+            <div id="recent-seasons-box" class="separator">
 
                 <div id="recent-seasons-header" class="all-headers">
                     <h2 id="recent-seasons-nav" class="header-nav">
