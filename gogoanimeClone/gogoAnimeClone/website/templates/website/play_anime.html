@@ -7,6 +7,10 @@
 
     <title>Watch Anime Name</title>
     <style>
+        html, body {
+         font-size: 13px;
+         font-family: myFirstFont, MyFont_IE, Tahoma, Geneva, sans-serif !important;
+        }
         #page-layout {
             float: left;
             width: 100%;
@@ -79,7 +83,71 @@
             color: #ffc119;
         }
         a:hover {
+            color: #fff !important;
+        }
+        #episode-navigation a {
+            text-decoration: none;
+            color: #ffc119;
+        }
+        #episode-navigation {
+            float: left;
+            width: 100%;
+        }
+        #episode-navigation-l {
+            float: left;
+            width: 50%;
+            text-align: left;
+            font-size: 12px;
+        }
+        #episode-navigation-r {
+            float: right;
+            width: 50%;
+            text-align: right;
+            font-size: 12px;
+        }
+        ul#related-episodes li {
+            position: relative;
+            list-style: none;
+            float: left;
+            margin: 5px 0;
+            margin-left: 1.5%;
+            width: 13%;
+        }
+        ul#related-episodes li:nth-child(7n+1) {
+            margin-left: 0;
+        }
+        #related-episodes-content {
+            padding: 20px;
+            display: block;
+            overflow: hidden;
+        }
+        ul#related-episodes li a {
             color: #fff;
+            display: block;
+            background-color: #363636;
+            width: 100%;
+            float: left;
+            padding: 0 8px;
+        }
+        ul#related-episodes li a div.name {
+            float: left;
+            padding: 8px 0;
+            width: 60%;
+            font-size: 11px;
+        }
+        ul#related-episodes li a div.divider {
+            background-image: url({% static 'website/viel.png' %});
+            background-repeat: no-repeat;
+            background-position: center center;
+            width: 1px;
+            height: 30px;
+            float: left;
+        }
+        ul#related-episodes li a div.type {
+            float: right;
+            color: #737373;
+            padding: 8px 0;
+            font-size: 11px;
         }
     </style>
 
@@ -106,14 +174,30 @@
                         </div>
                         <div id="anime-watch-note">
                             Please,
-                            <a onclick="window.location.reload();" href="javascript:void(0)" style="color: #00a651; text-decoration: none;">reload page</a>
+                            <a id="reload-button" onclick="window.location.reload();" href="javascript:void(0)" style="color: #00a651; text-decoration: none;">reload page</a>
                              if you can't watch the video
                         </div>
-                        <div>
-                            <video>
-                                Video Here
-                            </video>
+                        <div id="anime-watch-screen">
+
+                            <iframe style="margin: 20px 0;" width="100%" height="500" src="https://drive.google.com/file/d/1mw9w3uelSo3A2UdQskY5uqeJnnyvJgqv/preview" title="Anime Episode" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
                         </div>
+
+                        <div id="episode-navigation">
+                            <div id="episode-navigation-l">
+                                {% if True %}
+                                    <a href="content"> << Ep Name </a>
+                                {% endif %}
+                            </div>
+                            <div id="episode-navigation-r">
+                                {% if True %}
+                                    <a href="content"> Ep Name >> </a>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div id="aesthetic_padding" style="padding: 10px;"></div>
+
                     </div>
 
                 </div>
@@ -127,8 +211,36 @@
                             Related Episodes
                         </h2>
                     </div>
+
+                    <div style="clear: both;"></div>
+
                     <div id="related-episodes-content" class="border-bottom border-start border-end">
-                        Episode List
+                        <div id="load-eps" style="position: relative; right: 10px;">
+                            <ul id="related-episodes">
+                                {% for list_item in list %}
+                                    <li>
+                                        <a href="episode">
+                                            <div class="name">
+                                                <span>EP</span>  {}
+                                            </div>
+                                            <div class="divider"></div>
+                                            <div class="type">{}</div>
+                                        </a>
+                                    </li>
+                                {% endfor %}
+
+<!--                                <li>-->
+<!--                                    <a href="episode">-->
+<!--                                        <div class="name">-->
+<!--                                            <span>EP</span>  1-->
+<!--                                        </div>-->
+<!--                                        <div class="divider"></div>-->
+<!--                                        <div class="type">SUB</div>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+
+                            </ul>
+                        </div>
                     </div>
 
                 </div>
@@ -157,11 +269,11 @@
                 <div id="recent-release-box" class="separator" style="margin-left: 15px;">
                     <div id="recent-release-header" class="all-headers" style="width: 300px;">
                         <h2 id="recent-release-nav" class="header-nav">
-                            <span>ADVERTISEMENT</span>
+                            <span>Recent Release</span>
                         </h2>
                     </div>
                     <div id="recent-release-content" class="border-bottom border-start border-end" style="width: 300px;">
-                        Advertisement Content
+                        Recent Release Content
                     </div>
                 </div>
 

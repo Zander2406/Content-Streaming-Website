@@ -18,7 +18,7 @@ class AnimeView(View):
 
 class WatchView(View):
 
-    def get(self, request, anime_name):
+    def get(self, request, anime_episode):
         return render(request, 'website/play_anime.html')
 
 # Create your views here.
