@@ -1,4 +1,5 @@
 {% extends "website/base.html" %}
+{% load static %}
 
 {% block head %}
     {{ block.super }}
@@ -19,8 +20,9 @@
         }
         .right-side-panels {
             float: right;
-            width: 32%;
-            padding: 10px;
+            width: 340px;
+            padding-right: 30px;
+            padding-top: 10px;
         }
         .all-headers {
             background-color: #ffc119;
@@ -48,6 +50,9 @@
         .separator {
             margin-bottom: 26px;
         }
+        ul.items li:nth-child(4n+1) {
+            margin-left: 0;
+        }
     </style>
 {% endblock %}
 
@@ -72,10 +77,23 @@
                     </div>
                 </div>
                 <div id="recent-release-content" class="border-bottom border-start border-end">
-                    Main Content sdlkfksdjg;lzdfkgmd
-                    dfg;kdfkhgmdfkmgdsf
-                    gnfgkldfnhlkdflhkndf
-                    hdglnhkdfjsdggggggg
+                    <ul class="items">
+                        {% for i in range(20) %}
+                            <li>
+                                <div class="img">
+                                    <a href="/slug">
+                                        <img src="{% static 'website/anime_banner.png' %}">
+                                    </a>
+                                </div>
+                                <p>
+                                    Anime Name
+                                </p>
+                                <p>
+                                    Episode
+                                </p>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </div>
 
             </div>
@@ -108,31 +126,7 @@
                     </h2>
                 </div>
                 <div id="recently-added-series-content" class="border-bottom border-start border-end">
-                    Recently Added Series
-                    dfg;kdfkhgmdfkmgdsf
-                    gnfgkldfnhlkdflhkndf
-                    hdglnhkdfjsdgggggggdfg;kdfkhgmdfkmgdsf
-                    gnfgkldfnhlkdflhkndf
-                    hdglnhkdfjsdggggggg
-                    d
-                    d
-                    d
-                    d
-                    d
-                    d
-                    d
-                    d
-                    d
-                    d
-                    d
-                    d
-                    d
-                    d
-                    d
-                    d
-                    d
-                    d
-                    d
+                    {{ summary }}
                 </div>
 
             </div>
@@ -145,25 +139,25 @@
 
             <div id="advertisement-box" class="separator">
 
-                <div id="advertisement-box-header" class="all-headers">
+                <div id="advertisement-box-header" class="all-headers" style="width: 300px;">
                     <h2 id="advertisement-box-nav" class="header-nav">
                         <span>ADVERTISEMENT</span>
                     </h2>
                 </div>
-                <div id="advertisement-box-content" class="border-bottom border-start border-end">
-                    Advertisement Content
+                <div id="advertisement-box-content" class="border-bottom border-start border-end" style="width: 300px; height: 250px;">
+                    <img src="{% static 'website/ad-banner.jpg' %}" alt="Ad Banner" width="300px" height="250px">
                 </div>
 
             </div>
 
             <div id="top-rated-episodes" class="separator">
 
-                <div id="top-rated-episodes-header" class="all-headers">
+                <div id="top-rated-episodes-header" class="all-headers" style="width: 300px;">
                     <h2 id="top-rated-episodes-nav" class="header-nav">
                         <span>TOP RATED EPISODES</span>
                     </h2>
                 </div>
-                <div id="top-rated-episodes-content" class="border-bottom border-start border-end">
+                <div id="top-rated-episodes-content" class="border-bottom border-start border-end" style="width: 300px;">
                     Top Rated Episodes Content
                 </div>
 
@@ -171,12 +165,12 @@
 
             <div id="ongoing-series" class="separator">
 
-                <div id="ongoing-series-header" class="all-headers">
+                <div id="ongoing-series-header" class="all-headers" style="width: 300px;">
                     <h2 id="ongoing-series-nav" class="header-nav">
                         <span>ONGOING SERIES</span>
                     </h2>
                 </div>
-                <div id="ongoing-series-content" class="border-bottom border-start border-end">
+                <div id="ongoing-series-content" class="border-bottom border-start border-end" style="width: 300px;">
                     Ongoing Series Content
                 </div>
 
@@ -184,12 +178,12 @@
 
             <div id="genres" class="separator">
 
-                <div id="genres-header" class="all-headers">
+                <div id="genres-header" class="all-headers" style="width: 300px;">
                     <h2 id="genres-nav" class="header-nav">
                         <span>GENRES</span>
                     </h2>
                 </div>
-                <div id="genres-content" class="border-bottom border-start border-end">
+                <div id="genres-content" class="border-bottom border-start border-end" style="width: 300px;">
                     Genres Content
                 </div>
 
@@ -197,12 +191,12 @@
 
             <div id="recent-seasons" class="separator">
 
-                <div id="recent-seasons-header" class="all-headers">
+                <div id="recent-seasons-header" class="all-headers" style="width: 300px;">
                     <h2 id="recent-seasons-nav" class="header-nav">
                         <span>SEASON</span>
                     </h2>
                 </div>
-                <div id="recent-seasons-content" class="border-bottom border-start border-end" style="padding: 10px 0;">
+                <div id="recent-seasons-content" class="border-bottom border-start border-end" style="padding: 10px 0; width: 300px;">
                     <nav id="seasons-navbar">
                         Anime Seasons Nav
                     </nav>

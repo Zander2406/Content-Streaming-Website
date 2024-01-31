@@ -7,7 +7,8 @@ from django.views import View
 class MainView(View):
 
     def get(self, request):
-        return render(request, 'website/main.html')
+        page_data = {'summary': 'This is a summary'}
+        return render(request, 'website/main.html', page_data)
 
 
 class AnimeView(View):
