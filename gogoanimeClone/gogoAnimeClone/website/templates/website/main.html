@@ -50,8 +50,35 @@
         .separator {
             margin-bottom: 26px;
         }
+        ul.items {
+            margin-top: 20px;
+        }
         ul.items li:nth-child(4n+1) {
             margin-left: 0;
+        }
+        ul.items li {
+            float: left;
+            position: relative;
+            margin-left: 1.8867%;
+            width: 164px;
+            text-align: center;
+            list-style: none;
+            margin-bottom: 20px;
+            vertical-align: top;
+        }
+        ul.items li .img a {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        ul.items li .img img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
         }
     </style>
 {% endblock %}
@@ -78,7 +105,7 @@
                 </div>
                 <div id="recent-release-content" class="border-bottom border-start border-end">
                     <ul class="items">
-                        {% for i in range(20) %}
+                        {% for i in s %}
                             <li>
                                 <div class="img">
                                     <a href="/slug">
@@ -109,11 +136,7 @@
                     </div>
                 </div>
                 <div id="popular-ongoing-updates-content" class="border-bottom border-start border-end">
-                    Popular Anime Episode Updates
-                    sdgsdgsfgdgdhfghfg
-                    dfg;kdfkhgmdfkmgdsf
-                    gnfgkldfnhlkdflhkndf
-                    hdglnhkdfjsdggggggg
+
                 </div>
 
             </div>
@@ -126,7 +149,7 @@
                     </h2>
                 </div>
                 <div id="recently-added-series-content" class="border-bottom border-start border-end">
-                    {{ summary }}
+
                 </div>
 
             </div>

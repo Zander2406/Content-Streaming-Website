@@ -7,7 +7,8 @@ from django.views import View
 class MainView(View):
 
     def get(self, request):
-        page_data = {'summary': 'This is a summary'}
+        page_data = {'summary': 'This is a summary',
+                     's': [1, 2, 3, 4, 5, 6]}
         return render(request, 'website/main.html', page_data)
 
 
