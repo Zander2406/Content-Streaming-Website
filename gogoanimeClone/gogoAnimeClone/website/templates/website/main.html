@@ -61,6 +61,7 @@
             position: relative;
             margin-left: 1.8867%;
             width: 164px;
+            height: 217px;
             text-align: center;
             list-style: none;
             margin-bottom: 20px;
@@ -78,7 +79,7 @@
         ul.items li .img img {
             width: 100%;
             max-width: 100%;
-            height: auto;
+            height: 100%;
         }
     </style>
 {% endblock %}
@@ -103,7 +104,7 @@
                         Pagination
                     </div>
                 </div>
-                <div id="recent-release-content" class="border-bottom border-start border-end">
+                <div id="recent-release-content" class="border-bottom border-start border-end" style="display: flex; flex-direction: column;">
                     <ul class="items">
                         {% for i in s %}
                             <li>
