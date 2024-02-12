@@ -7,8 +7,11 @@ from django.views import View
 class MainView(View):
 
     def get(self, request):
+        main_anime = {'name': 'Solo Leveling', 'episode': 6}
+        popular_anime = {'name': 'Solo Leveling', 'genres': ['Action', 'Shounen', 'Adult'], 'latest_episode': 6}
         page_data = {'summary': 'This is a summary',
-                     's': [1, 2, 3, 4, 5, 6]}
+                     'mainAnime': [main_anime for x in range(1, 21)],
+                     'popularAnime': [popular_anime for i in range(1, 11)]}
         return render(request, 'website/main.html', page_data)
 
 
