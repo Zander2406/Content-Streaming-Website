@@ -87,6 +87,9 @@
             font-size: 13px;
             font-family: mySecondFont;
         }
+        ul.items li p.anime-name a:hover {
+            color: #fff;
+        }
         #popular-ongoing-updates-content ul li:nth-child(2n+1) {
             border-right: solid 1px #555;
             clear: both;
@@ -140,6 +143,27 @@
         }
         #popular-ongoing-updates-content ul li .latest_episode a:hover {
             color: #ffc119;
+        }
+        #popular-ongoing-updates-content ul li .genres a:hover {
+            color: #ffffff;
+        }
+        #recently-added-series-content ul li:nth-child(2n+1) {
+            border-right: solid 1px #555;
+        }
+        #recently-added-series-content ul li {
+            float: left;
+            list-style: none;
+            width: 50%;
+            overflow: visible;
+            height: auto;
+            padding: 10px 0;
+        }
+        #recently-added-series-content ul li a {
+            text-decoration: none;
+            color: #ffc119;
+        }
+        #recently-added-series-content ul li a:hover {
+            color: #ffffff;
         }
     </style>
 {% endblock %}
@@ -196,9 +220,9 @@
                         Pagination
                     </div>
                 </div>
-                <div id="popular-ongoing-updates-content" class="border-bottom border-start border-end" style="display: flex; flex-direction: column;">
+                <div id="popular-ongoing-updates-content" class="border-bottom border-start border-end" style="display: flex; flex-direction: column; padding-top: 20px; padding-bottom: 20px;">
 
-                    <ul>
+                    <ul style="margin: 0; padding-left: 0;">
                         {% for item in popularAnime %}
 
                             <li>
@@ -208,7 +232,11 @@
                                 <a href="/slug" title="Anime Name"> Anime Name </a>
                                 <p class="genres"> Genres:
                                     {% for genre in item.genres %}
-                                        <a href="/slug">{{ genre }},</a>
+                                        {% if forloop.revcounter0 == 0 %}
+                                            <a href="/slug">{{ genre }}</a>
+                                        {% else %}
+                                            <a href="/slug">{{ genre }}, </a>
+                                        {% endif %}
                                     {% endfor %}
                                 </p>
                                 <p class="latest_episode"> Latest:
@@ -230,7 +258,17 @@
                         <span>RECENTLY ADDED SERIES</span>
                     </h2>
                 </div>
-                <div id="recently-added-series-content" class="border-bottom border-start border-end">
+                <div id="recently-added-series-content" class="border-bottom border-start border-end" style="display: flex; flex-direction: column; padding-top: 20px; padding-bottom: 20px;">
+
+                    <ul style="margin: 0; padding-left: 0;">
+                        {% for item in recentlyAdded %}
+
+                            <li style="padding: 5px 20px;">
+                                <a href="/slug" title="Anime Name"> {{ item }} </a>
+                            </li>
+
+                        {% endfor %}
+                    </ul>
 
                 </div>
 
