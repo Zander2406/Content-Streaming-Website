@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Genre(models.Model):
-    genre = models.CharField(max_length=15)
+    genre = models.CharField(max_length=30)
 
 
 class Lang(models.Model):
@@ -37,7 +37,7 @@ class Anime(models.Model):
     type = models.ForeignKey('Type', on_delete=models.CASCADE, null=False)
     name = models.CharField(max_length=200)
     summary = models.TextField()
-    released = models.ForeignKey('Year', on_delete=models.SET_NULL, null=True)
+    released = models.ForeignKey('Season', on_delete=models.SET_NULL, null=True)
     status = models.ForeignKey('Status', on_delete=models.SET_NULL, null=True)
     other_names = models.TextField()
 
