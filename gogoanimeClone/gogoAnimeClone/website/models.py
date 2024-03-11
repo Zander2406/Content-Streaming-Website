@@ -39,9 +39,10 @@ class Anime(models.Model):
     summary = models.TextField()
     released = models.ForeignKey('Season', on_delete=models.SET_NULL, null=True)
     status = models.ForeignKey('Status', on_delete=models.SET_NULL, null=True)
+    lang = models.ForeignKey('Lang', on_delete=models.SET_NULL, null=True)
     other_names = models.TextField()
 
 
 class GenreMap(models.Model):
-    genre_id = models.ForeignKey('Genre', on_delete=models.CASCADE, null=True)
-    anime_id = models.ForeignKey('Anime', on_delete=models.CASCADE, null=True)
+    genre = models.ForeignKey('Genre', on_delete=models.CASCADE, null=True)
+    anime = models.ForeignKey('Anime', on_delete=models.CASCADE, null=True)
