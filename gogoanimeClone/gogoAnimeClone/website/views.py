@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.utils.html import escape
 from django.views import View
+from .models import *
 
 
 class MainView(View):
@@ -31,6 +32,7 @@ class MainView(View):
                                  2016: ['Winter', 'Spring', 'Summer', 'Fall'],
                                  2015: ['Winter', 'Spring', 'Summer', 'Fall'],
                                  2014: ['Winter', 'Spring', 'Summer', 'Fall']}}
+        main_episodes = Episodes.objects.all()
         return render(request, 'website/main.html', page_data)
 
 
