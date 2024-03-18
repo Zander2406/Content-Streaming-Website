@@ -271,7 +271,7 @@
                 </div>
                 <div id="recent-release-content" class="border-bottom border-start border-end" style="display: flex; flex-direction: column;">
                     <ul class="items">
-                        {% for item in mainAnime %}
+                        {% for episode in latest_episodes %}
                             <li>
                                 <div class="img">
                                     <a href="/slug">
@@ -279,10 +279,10 @@
                                     </a>
                                 </div>
                                 <p class="anime-name" style="position: relative; padding-top: 8px; margin-bottom: 5px;">
-                                    <a href="/slug">{{ item.name }}</a>
+                                    <a href="/slug">{{ episode.anime.name }}</a>
                                 </p>
                                 <p class="episode" style="margin-bottom: 0;">
-                                    Episode {{ item.episode }}
+                                    {{ episode.name }}
                                 </p>
                             </li>
                         {% endfor %}
@@ -304,7 +304,7 @@
                 <div id="popular-ongoing-updates-content" class="border-bottom border-start border-end" style="display: flex; flex-direction: column; padding-top: 20px; padding-bottom: 20px;">
 
                     <ul style="margin: 0; padding-left: 0;">
-                        {% for item in popularAnime %}
+                        {% for item in popular_anime %}
 
                             <li>
                                 <a href="/slug" title="Anime Name">
@@ -342,7 +342,7 @@
                 <div id="recently-added-series-content" class="border-bottom border-start border-end" style="display: flex; flex-direction: column; padding-top: 20px; padding-bottom: 20px;">
 
                     <ul style="margin: 0; padding-left: 0;">
-                        {% for item in recentlyAdded %}
+                        {% for item in recently_added %}
 
                             <li style="padding: 5px 20px;">
                                 <a href="/slug" title="Anime Name"> {{ item }} </a>
@@ -383,7 +383,7 @@
                 </div>
                 <div id="top-rated-episodes-content" class="border-bottom border-start border-end" style="display: flex; flex-direction: column; padding: 14px 14px; width: 300px;">
                     <ul>
-                        {% for item in topAnime %}
+                        {% for item in top_anime %}
 
                             <li>
                                 <a href="/slug" title="Anime Name">
@@ -412,7 +412,7 @@
                         <ul>
 
                             {% for item in ongoing %}
-                                <li> <a href="/slug"> {{ item }} </a> </li>
+                                <li> <a href="/slug"> {{ item.name }} </a> </li>
                             {% endfor %}
 
                         </ul>
@@ -435,7 +435,7 @@
                         {% for genre in genres %}
 
                             <li>
-                                    <a href="/slug" title="Genre"> {{ genre }} </a>
+                                    <a href="/slug" title="Genre"> {{ genre.genre }} </a>
                             </li>
 
                         {% endfor %}
@@ -467,6 +467,11 @@
                                     {% endfor %}
                                 </li>
                             {% endfor %}
+                            {% regroup seasons by year as seasons_list %}
+                                {% for item in seasons_list %}
+                                    {{ item }}
+                                    <br>
+                                {% endfor %}
                         </ul>
                     </nav>
                 </div>

@@ -41,6 +41,7 @@ class Anime(models.Model):
     status = models.ForeignKey('Status', on_delete=models.SET_NULL, null=True)
     lang = models.ForeignKey('Lang', on_delete=models.SET_NULL, null=True)
     other_names = models.TextField()
+    rating = models.FloatField(null=True)
 
 
 class GenreMap(models.Model):
