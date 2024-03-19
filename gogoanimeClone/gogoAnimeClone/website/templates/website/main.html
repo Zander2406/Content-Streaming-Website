@@ -310,7 +310,7 @@
                                 <a href="/slug" title="Anime Name">
                                     <div class="thumbnail" style="background: url({% static 'website/anime_banner.png' %});"></div>
                                 </a>
-                                <a href="/slug" title="Anime Name"> Anime Name </a>
+                                <a href="/slug" title="Anime Name"> {{ item.name }} </a>
                                 <p class="genres"> Genres:
                                     {% for genre in item.genres %}
                                         {% if forloop.revcounter0 == 0 %}
@@ -345,7 +345,7 @@
                         {% for item in recently_added %}
 
                             <li style="padding: 5px 20px;">
-                                <a href="/slug" title="Anime Name"> {{ item }} </a>
+                                <a href="/slug" title="Anime Name"> {{ item.name }} </a>
                             </li>
 
                         {% endfor %}
@@ -435,7 +435,7 @@
                         {% for genre in genres %}
 
                             <li>
-                                    <a href="/slug" title="Genre"> {{ genre.genre }} </a>
+                                    <a href="/{{ genre.genre }}" title="Genre"> {{ genre.genre }} </a>
                             </li>
 
                         {% endfor %}
@@ -455,23 +455,19 @@
                 <div id="recent-seasons-content" class="border-bottom border-start border-end" style="padding: 10px 0; width: 300px;">
                     <nav id="seasons-navbar" style="padding-left: 14px;">
                         <ul>
-                            {% for key, values in seasons.items %}
+                            {% regroup seasons by year as seasons_list %}
+                            {% for season in seasons_list|slice:":11" %}
                                 <li>
-                                    <span style="color:#898989;">Anime {{ key }}:</span>
-                                    {% for value in values %}
+                                    <span style="color:#898989;">Anime {{ season.grouper.year }}:</span>
+                                    {% for item in season.list %}
                                         {% if forloop.revcounter0 == 0 %}
-                                            <a style="display: inline;" href="/slug" title="Season Anime">{{ value }}</a>
+                                            <a style="display: inline;" href="/slug" title="Season Anime">{{ item.season }}</a>
                                         {% else %}
-                                            <a style="display: inline;" href="/slug" title="Season Anime">{{ value }}</a> |
+                                            <a style="display: inline;" href="/slug" title="Season Anime">{{ item.season }}</a> |
                                         {% endif %}
                                     {% endfor %}
                                 </li>
                             {% endfor %}
-                            {% regroup seasons by year as seasons_list %}
-                                {% for item in seasons_list %}
-                                    {{ item }}
-                                    <br>
-                                {% endfor %}
                         </ul>
                     </nav>
                 </div>

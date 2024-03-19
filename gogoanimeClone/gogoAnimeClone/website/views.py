@@ -3,19 +3,22 @@ from django.http import HttpResponse
 from django.utils.html import escape
 from django.views import View
 from .models import *
+from django.core.paginator import Paginator
 
 
 class MainView(View):
 
     def get(self, request):
-        main_anime = {'name': 'Solo Leveling', 'episode': 6}
-        popular_anime = {'name': 'Solo Leveling', 'genres': ['Action', 'Shounen', 'Adult'], 'latest_episode': 6}
-        anime_name = 'Solo Leveling'
-        top_anime = {'name': 'Solo Leveling', 'episode': 6}
-        ongoing = 'Solo Leveling'
-        genre = 'Adventure'
-        page_data = {'summary': 'This is a summary',
-                     'latest_episodes': Episodes.objects.all()[::-1],
+        latest_episodes = Episodes.objects.all()[::-1]
+        latest_ep_paginator = Paginator(latest_episodes, 20)
+        latest_ep_page_number = request.GET.get("page")
+        latest_ep_page_object = latest_ep_paginator.get_page(latest_ep_page_number)
+
+        popular_anime = Anime.objects.order_by("rating")
+        popular_anime_paginator = Paginator(popular_anime, 10)
+        popular_anime_page_number = request.GET.get("page")
+        popular_anime_page_object = popular_anime_paginator.get_page(popular_anime_page_number)
+        page_data = {'latest_episodes': Episodes.objects.all()[::-1],
                      'popular_anime': Anime.objects.order_by("rating"),
                      'recently_added': Anime.objects.all(),
                      'top_anime': Anime.objects.order_by("rating"),
@@ -23,8 +26,6 @@ class MainView(View):
                      'genres': Genre.objects.all(),
                      'seasons': Season.objects.all()[::-1],
                      }
-        season = Season.objects.all().values()[::-1]
-        print(season)
         return render(request, 'website/main.html', page_data)
 
 
