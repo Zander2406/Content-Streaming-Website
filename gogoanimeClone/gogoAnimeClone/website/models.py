@@ -30,6 +30,7 @@ class Episodes(models.Model):
     name = models.CharField(max_length=30)
     episode_link = models.CharField(max_length=200)
     anime = models.ForeignKey('Anime', on_delete=models.CASCADE, null=False)
+    comments = models.IntegerField(null=True)
 
 
 class Anime(models.Model):

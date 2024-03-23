@@ -260,16 +260,9 @@
                 <div id="recent-release-header" class="all-headers">
                     <h2 id="recent-release-nav" class="header-nav">
                         <a href="">RECENT RELEASE</a>
-                        <span style="padding: 0 10px;">|</span>
-                        <a href="">DUB</a>
-                        <span style="padding: 0 10px;">|</span>
-                        <a href="">CHINESE DUB</a>
                     </h2>
-                    <div id="recent-release-pagination" class="header-pagination">
-                        Pagination
-                    </div>
                 </div>
-                <div id="recent-release-content" class="border-bottom border-start border-end" style="display: flex; flex-direction: column;">
+                <div id="recent-release-content" class="border-bottom border-start border-end" style="display: block; height: 1200px; overflow-y: auto;">
                     <ul class="items">
                         {% for episode in latest_episodes %}
                             <li>
@@ -297,9 +290,6 @@
                     <h2 id="popular-ongoing-updates-nav" class="header-nav">
                         <span>POPULAR ONGOING UPDATE</span>
                     </h2>
-                    <div id="popular-ongoing-updates-pagination" class="header-pagination">
-                        Pagination
-                    </div>
                 </div>
                 <div id="popular-ongoing-updates-content" class="border-bottom border-start border-end" style="display: flex; flex-direction: column; padding-top: 20px; padding-bottom: 20px;">
 
