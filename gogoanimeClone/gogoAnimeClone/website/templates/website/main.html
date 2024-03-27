@@ -294,19 +294,20 @@
                 <div id="popular-ongoing-updates-content" class="border-bottom border-start border-end" style="display: flex; flex-direction: column; padding-top: 20px; padding-bottom: 20px;">
 
                     <ul style="margin: 0; padding-left: 0;">
-                        {% for item in popular_anime %}
+                        {% regroup popular_ongoing_update by anime_id as popular_ongoing_anime %}
+                        {% for item in popular_ongoing_anime %}
 
                             <li>
                                 <a href="/slug" title="Anime Name">
                                     <div class="thumbnail" style="background: url({% static 'website/anime_banner.png' %});"></div>
                                 </a>
-                                <a href="/slug" title="Anime Name"> {{ item.name }} </a>
+                                <a href="/slug" title="Anime Name"> {{ item.list.0.anime.name }} </a>
                                 <p class="genres"> Genres:
-                                    {% for genre in item.genres %}
+                                    {% for genre in item.list %}
                                         {% if forloop.revcounter0 == 0 %}
-                                            <a href="/slug">{{ genre }}</a>
+                                            <a href="/slug">{{ genre.genre.genre }}</a>
                                         {% else %}
-                                            <a href="/slug">{{ genre }}, </a>
+                                            <a href="/slug">{{ genre.genre.genre }}, </a>
                                         {% endif %}
                                     {% endfor %}
                                 </p>
