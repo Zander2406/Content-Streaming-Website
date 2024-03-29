@@ -1,5 +1,6 @@
 {% extends "website/base.html" %}
 {% load static %}
+{% load website_extras %}
 
 {% block head %}
     {{ block.super }}
@@ -104,7 +105,7 @@
         }
         .thumbnail {
             width: 90px;
-            height: 94px;
+            height: 110px;
             background-size: 100% auto !important;
             background-repeat: repeat !important;
             float: left;
@@ -267,12 +268,12 @@
                         {% for episode in latest_episodes %}
                             <li>
                                 <div class="img">
-                                    <a href="/slug">
+                                    <a href="/{{ episode.anime.name }}">
                                         <img src="{% static 'website/anime_banner.png' %}">
                                     </a>
                                 </div>
                                 <p class="anime-name" style="position: relative; padding-top: 8px; margin-bottom: 5px;">
-                                    <a href="/slug">{{ episode.anime.name }}</a>
+                                    <a href="/{{ episode.anime.name }}">{{ episode.anime.name }}</a>
                                 </p>
                                 <p class="episode" style="margin-bottom: 0;">
                                     {{ episode.name }}
@@ -312,7 +313,15 @@
                                     {% endfor %}
                                 </p>
                                 <p class="latest_episode"> Latest:
-                                    <a href="/slug"> Episode {{ item.latest_episode }} </a>
+                                    {% define True as continue %}
+                                    {% for episode in latest_episodes %}
+                                        {% if continue %}
+                                            {% if episode.anime_id == item.grouper %}
+                                                <a href="/slug"> {{ episode.name }} </a>
+                                                {% define False as continue %}
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
                                 </p>
                             </li>
 

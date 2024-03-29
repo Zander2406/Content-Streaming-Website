@@ -17,8 +17,6 @@ class MainView(View):
                      'genres': Genre.objects.all(),
                      'seasons': Season.objects.all()[::-1],
                      }
-        test_data = GenreMap.objects.filter(anime__status_id=1).order_by("anime__rating")
-        print(test_data)
         return render(request, 'website/main.html', page_data)
 
 
