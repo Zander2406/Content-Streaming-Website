@@ -273,7 +273,7 @@
                                     </a>
                                 </div>
                                 <p class="anime-name" style="position: relative; padding-top: 8px; margin-bottom: 5px;">
-                                    <a href="/{{ episode.anime.name }}">{{ episode.anime.name }}</a>
+                                    <a href="/{% urlbuilder episode.anime.name episode.name %}">{{ episode.anime.name }}</a>
                                 </p>
                                 <p class="episode" style="margin-bottom: 0;">
                                     {{ episode.name }}
@@ -317,7 +317,7 @@
                                     {% for episode in latest_episodes %}
                                         {% if continue %}
                                             {% if episode.anime_id == item.grouper %}
-                                                <a href="/slug"> {{ episode.name }} </a>
+                                                <a href="/{% urlbuilder episode.anime.name episode.name %}"> {{ episode.name }} </a>
                                                 {% define False as continue %}
                                             {% endif %}
                                         {% endif %}
@@ -435,7 +435,7 @@
                         {% for genre in genres %}
 
                             <li>
-                                    <a href="/{{ genre.genre }}" title="Genre"> {{ genre.genre }} </a>
+                                    <a href="/genre/{% genrebuilder genre.genre %}" title="Genre"> {{ genre.genre }} </a>
                             </li>
 
                         {% endfor %}
