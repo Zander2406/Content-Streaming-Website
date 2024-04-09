@@ -268,12 +268,12 @@
                         {% for episode in latest_episodes %}
                             <li>
                                 <div class="img">
-                                    <a href="/{{ episode.anime.name }}">
+                                    <a href="/{% episodebuilder episode.anime.name episode.name %}">
                                         <img src="{% static 'website/anime_banner.png' %}">
                                     </a>
                                 </div>
                                 <p class="anime-name" style="position: relative; padding-top: 8px; margin-bottom: 5px;">
-                                    <a href="/{% urlbuilder episode.anime.name episode.name %}">{{ episode.anime.name }}</a>
+                                    <a href="/{% episodebuilder episode.anime.name episode.name %}">{{ episode.anime.name }}</a>
                                 </p>
                                 <p class="episode" style="margin-bottom: 0;">
                                     {{ episode.name }}
@@ -299,16 +299,16 @@
                         {% for item in popular_ongoing_anime %}
 
                             <li>
-                                <a href="/slug" title="Anime Name">
+                                <a href="/{% namebuilder item.list.0.anime.name %}" title="Anime Name">
                                     <div class="thumbnail" style="background: url({% static 'website/anime_banner.png' %});"></div>
                                 </a>
-                                <a href="/slug" title="Anime Name"> {{ item.list.0.anime.name }} </a>
+                                <a href="/{% namebuilder item.list.0.anime.name %}" title="Anime Name"> {{ item.list.0.anime.name }} </a>
                                 <p class="genres"> Genres:
                                     {% for genre in item.list %}
                                         {% if forloop.revcounter0 == 0 %}
-                                            <a href="/slug">{{ genre.genre.genre }}</a>
+                                            <a href="/{% namebuilder genre.genre.genre %}">{{ genre.genre.genre }}</a>
                                         {% else %}
-                                            <a href="/slug">{{ genre.genre.genre }}, </a>
+                                            <a href="/{% namebuilder genre.genre.genre %}">{{ genre.genre.genre }}, </a>
                                         {% endif %}
                                     {% endfor %}
                                 </p>
@@ -317,7 +317,7 @@
                                     {% for episode in latest_episodes %}
                                         {% if continue %}
                                             {% if episode.anime_id == item.grouper %}
-                                                <a href="/{% urlbuilder episode.anime.name episode.name %}"> {{ episode.name }} </a>
+                                                <a href="/{% episodebuilder episode.anime.name episode.name %}"> {{ episode.name }} </a>
                                                 {% define False as continue %}
                                             {% endif %}
                                         {% endif %}
@@ -345,7 +345,7 @@
                         {% for item in recently_added %}
 
                             <li style="padding: 5px 20px;">
-                                <a href="/slug" title="Anime Name"> {{ item.name }} </a>
+                                <a href="/{% namebuilder item.name %}" title="Anime Name"> {{ item.name }} </a>
                             </li>
 
                         {% endfor %}
@@ -383,13 +383,13 @@
                 </div>
                 <div id="top-rated-episodes-content" class="border-bottom border-start border-end" style="display: flex; flex-direction: column; padding: 14px 14px; width: 300px;">
                     <ul>
-                        {% for item in top_anime %}
+                        {% for item in top_anime|slice:10 %}
 
                             <li>
-                                <a href="/slug" title="Anime Name">
+                                <a href="/{% namebuilder item.name %}" title="Anime Name">
                                         <span style="color: #ffc119;"> {{ forloop.counter }}. </span>
-                                        {{ item.name }}
-                                    <p class="released">Episode: {{ item.episode }}</p>
+                                        {{ item.anime.name }}
+                                    <p class="released"> {% replace item.name %} </p>
                                 </a>
                             </li>
 
@@ -435,7 +435,7 @@
                         {% for genre in genres %}
 
                             <li>
-                                    <a href="/genre/{% genrebuilder genre.genre %}" title="Genre"> {{ genre.genre }} </a>
+                                    <a href="/genre/{% namebuilder genre.genre %}" title="Genre"> {{ genre.genre }} </a>
                             </li>
 
                         {% endfor %}
@@ -461,9 +461,9 @@
                                     <span style="color:#898989;">Anime {{ season.grouper.year }}:</span>
                                     {% for item in season.list %}
                                         {% if forloop.revcounter0 == 0 %}
-                                            <a style="display: inline;" href="/slug" title="Season Anime">{{ item.season }}</a>
+                                            <a style="display: inline;" href="/sub-category/{% season_tag item.season season.grouper.year %}" title="Season Anime">{{ item.season }}</a>
                                         {% else %}
-                                            <a style="display: inline;" href="/slug" title="Season Anime">{{ item.season }}</a> |
+                                            <a style="display: inline;" href="/sub-category/{% season_tag item.season season.grouper.year %}">{{ item.season }}</a> |
                                         {% endif %}
                                     {% endfor %}
                                 </li>

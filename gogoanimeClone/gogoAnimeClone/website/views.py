@@ -12,7 +12,7 @@ class MainView(View):
         page_data = {'latest_episodes': Episodes.objects.all()[::-1],
                      'popular_ongoing_update': GenreMap.objects.filter(anime__status_id=1).order_by("anime__rating"),
                      'recently_added': Anime.objects.all(),
-                     'top_anime': Anime.objects.order_by("rating"),
+                     'top_anime': Episodes.objects.order_by("comments"),
                      'ongoing': Anime.objects.filter(status_id=1),
                      'genres': Genre.objects.all(),
                      'seasons': Season.objects.all()[::-1],

@@ -11,7 +11,7 @@ def define(val=None):
 
 
 @register.simple_tag
-def urlbuilder(string1, string2):
+def episodebuilder(string1, string2):
     bad_characters = ":;,.!?"
     string1 = string1.lower() + "-" + string2.lower()
     string1 = string1.replace(" ", "-")
@@ -20,11 +20,23 @@ def urlbuilder(string1, string2):
 
 
 @register.simple_tag
-def genrebuilder(*args):
+def namebuilder(*args):
     bad_characters = ":;,.!?"
     result = ""
     for item in args:
         result = item.lower() + result
     string1 = result.replace(" ", "-")
     result = re.sub(rf'[{bad_characters}]', '', string1)
+    return result
+
+
+@register.simple_tag
+def replace(string1):
+    string1 = string1.replace(" ", ": ")
+    return string1
+
+
+@register.simple_tag
+def season_tag(season, year):
+    result = f"{str(season.lower())}-{str(year)}-anime"
     return result
