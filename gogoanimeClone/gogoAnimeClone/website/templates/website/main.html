@@ -268,12 +268,12 @@
                         {% for episode in latest_episodes %}
                             <li>
                                 <div class="img">
-                                    <a href="/{% episodebuilder episode.anime.name episode.name %}">
+                                    <a href="/{% episodebuilder episode.anime.name_slug episode.name %}">
                                         <img src="{% static 'website/anime_banner.png' %}">
                                     </a>
                                 </div>
                                 <p class="anime-name" style="position: relative; padding-top: 8px; margin-bottom: 5px;">
-                                    <a href="/{% episodebuilder episode.anime.name episode.name %}">{{ episode.anime.name }}</a>
+                                    <a href="/{% episodebuilder episode.anime.name_slug episode.name %}">{{ episode.anime.name }}</a>
                                 </p>
                                 <p class="episode" style="margin-bottom: 0;">
                                     {{ episode.name }}
@@ -299,16 +299,16 @@
                         {% for item in popular_ongoing_anime %}
 
                             <li>
-                                <a href="/{% namebuilder item.list.0.anime.name %}" title="Anime Name">
+                                <a href="/category/{{ item.list.0.anime.name_slug }}" title="Anime Name">
                                     <div class="thumbnail" style="background: url({% static 'website/anime_banner.png' %});"></div>
                                 </a>
-                                <a href="/{% namebuilder item.list.0.anime.name %}" title="Anime Name"> {{ item.list.0.anime.name }} </a>
+                                <a href="/category/{{ item.list.0.anime.name_slug }}" title="Anime Name"> {{ item.list.0.anime.name }} </a>
                                 <p class="genres"> Genres:
                                     {% for genre in item.list %}
                                         {% if forloop.revcounter0 == 0 %}
-                                            <a href="/{% namebuilder genre.genre.genre %}">{{ genre.genre.genre }}</a>
+                                            <a href="/genre/{% namebuilder genre.genre.genre %}">{{ genre.genre.genre }}</a>
                                         {% else %}
-                                            <a href="/{% namebuilder genre.genre.genre %}">{{ genre.genre.genre }}, </a>
+                                            <a href="/genre/{% namebuilder genre.genre.genre %}">{{ genre.genre.genre }}, </a>
                                         {% endif %}
                                     {% endfor %}
                                 </p>
@@ -317,7 +317,7 @@
                                     {% for episode in latest_episodes %}
                                         {% if continue %}
                                             {% if episode.anime_id == item.grouper %}
-                                                <a href="/{% episodebuilder episode.anime.name episode.name %}"> {{ episode.name }} </a>
+                                                <a href="/{% episodebuilder episode.anime.name_slug  episode.name %}"> {{ episode.name }} </a>
                                                 {% define False as continue %}
                                             {% endif %}
                                         {% endif %}
@@ -345,7 +345,7 @@
                         {% for item in recently_added %}
 
                             <li style="padding: 5px 20px;">
-                                <a href="/{% namebuilder item.name %}" title="Anime Name"> {{ item.name }} </a>
+                                <a href="/{{ item.name_slug }}" title="Anime Name"> {{ item.name }} </a>
                             </li>
 
                         {% endfor %}
@@ -389,7 +389,7 @@
                                 <a href="/{% namebuilder item.name %}" title="Anime Name">
                                         <span style="color: #ffc119;"> {{ forloop.counter }}. </span>
                                         {{ item.anime.name }}
-                                    <p class="released"> {% replace item.name %} </p>
+                                    <p class="released"> {% place_colon item.name %} </p>
                                 </a>
                             </li>
 

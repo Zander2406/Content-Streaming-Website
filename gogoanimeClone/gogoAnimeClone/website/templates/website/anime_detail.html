@@ -3,7 +3,7 @@
 
 {% block head %}
     {{ block.super }}
-    <title>Anime Name at Gogoanime</title>
+    <title> {{ anime_details.name }} at Gogoanime</title>
     <style>
         html, body {
             font-size: 13px;
@@ -88,10 +88,14 @@
                 <div id="anime-info-content" class="border-bottom border-start border-end" style="width: 100%; padding-top: 20px;">
                     <div id="anime-info">
                         <img src="{% static 'website/placeholderimage.png' %}" alt="Anime Poster" width="320px" style="float: left; padding-right: 15px; margin-left: 20px">
-                        <div style="float: left; margin-right: 20px;">
-                            <h1 class="heading-info">Anime Name</h1>
-                            <p class="info"><span class="info-category">Type: </span><a href="/">Type</a></p>
-                            <p class="info"><span class="info-category">Plot Summary: </span><span class="plain-text">Plot Summary</span></p>
+                        <div style="margin-right: 20px;">
+                            <h1 class="heading-info">{{ anime_details.name }}</h1>
+                            {% for genre in genres %}
+                                {{ genre.genre.genre }}
+                            {% endfor %}
+                            <div style="padding: 5px"></div>
+                            <p class="info"><span class="info-category">Type: </span><a href="/">{{ anime_details.type.type }}</a></p>
+                            <p class="info"><span class="info-category">Plot Summary: </span><div class="plain-text">{{ anime_details.summary }}</div></p>
                             <p class="info"><span class="info-category">Genre: </span><a>Genre</a></p>
                             <p class="info"><span class="info-category">Season: </span><a>Season</a></p>
                             <p class="info"><span class="info-category">Status: </span><a>Status</a></p>

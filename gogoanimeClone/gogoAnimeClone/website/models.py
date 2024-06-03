@@ -35,6 +35,7 @@ class Episodes(models.Model):
 
 class Anime(models.Model):
     anime_banner_link = models.CharField(max_length=200)
+    name_slug = models.CharField(max_length=200, null=True)
     type = models.ForeignKey('Type', on_delete=models.CASCADE, null=False)
     name = models.CharField(max_length=200)
     summary = models.TextField()

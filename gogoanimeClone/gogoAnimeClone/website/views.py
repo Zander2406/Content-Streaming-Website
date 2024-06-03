@@ -23,7 +23,12 @@ class MainView(View):
 class AnimeView(View):
 
     def get(self, request, anime_name):
-        return render(request, 'website/anime_detail.html')
+        page_data = {'anime_details': Anime.objects.filter(name_slug=anime_name)[0],
+                     'genres': GenreMap.objects.filter(anime__name_slug=anime_name),
+                     }
+        test = Anime.objects.filter(name_slug=anime_name)[0]
+        print(test.type.type)
+        return render(request, 'website/anime_detail.html', page_data)
 
 
 class WatchView(View):

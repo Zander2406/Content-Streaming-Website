@@ -12,10 +12,12 @@ def define(val=None):
 
 @register.simple_tag
 def episodebuilder(string1, string2):
-    bad_characters = ":;,.!?"
-    string1 = string1.lower() + "-" + string2.lower()
-    string1 = string1.replace(" ", "-")
-    result = re.sub(rf'[{bad_characters}]', '', string1)
+    # bad_characters = ":;,.!?"
+    # string1 = string1.lower() + "-" + string2.lower()
+    # string1 = string1.replace(" ", "-")
+    # result = re.sub(rf'[{bad_characters}]', '', string1)
+    string2 = string2.replace(" ", "-")
+    result = string1 + "-" + string2.lower()
     return result
 
 
@@ -31,7 +33,7 @@ def namebuilder(*args):
 
 
 @register.simple_tag
-def replace(string1):
+def place_colon(string1):
     string1 = string1.replace(" ", ": ")
     return string1
 
