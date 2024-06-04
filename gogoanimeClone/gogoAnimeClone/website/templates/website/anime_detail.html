@@ -1,5 +1,6 @@
 {% extends "website/base.html" %}
 {% load static %}
+{% load website_extras %}
 
 {% block head %}
     {{ block.super }}
@@ -90,24 +91,32 @@
                         <img src="{% static 'website/placeholderimage.png' %}" alt="Anime Poster" width="320px" style="float: left; padding-right: 15px; margin-left: 20px">
                         <div style="margin-right: 20px;">
                             <h1 class="heading-info">{{ anime_details.name }}</h1>
-                            {% for genre in genres %}
-                                {{ genre.genre.genre }}
-                            {% endfor %}
                             <div style="padding: 5px"></div>
                             <p class="info"><span class="info-category">Type: </span><a href="/">{{ anime_details.type.type }}</a></p>
                             <p class="info"><span class="info-category">Plot Summary: </span><div class="plain-text">{{ anime_details.summary }}</div></p>
-                            <p class="info"><span class="info-category">Genre: </span><a>Genre</a></p>
-                            <p class="info"><span class="info-category">Season: </span><a>Season</a></p>
-                            <p class="info"><span class="info-category">Status: </span><a>Status</a></p>
-                            <p class="info"><span class="info-category">Other Names: </span><span class="plain-text">Other Names</span></p>
+                            <p class="info"><span class="info-category">Genre: </span>
+                                {% for genre in genres %}
+                                    {% if forloop.revcounter0 == 0 %}
+                                        <a href="/genre/{% namebuilder genre.genre.genre %}">{{ genre.genre.genre }}</a>
+                                    {% else %}
+                                        <a href="/genre/{% namebuilder genre.genre.genre %}">{{ genre.genre.genre }}, </a>
+                                    {% endif %}
+                                {% endfor %}
+                            </p>
+                            <p class="info"><span class="info-category">Season: </span><a>{{ anime_details.released.year.year }}</a></p>
+                            <p class="info"><span class="info-category">Status: </span><a>{{ anime_details.status.status }}</a></p>
+                            <p class="info"><span class="info-category">Other Names: </span><span class="plain-text">{{ anime_details.other_names }}</span></p>
                         </div>
                     </div>
                     <div style="clear: both;"></div>
                     <div style="margin: 0 20px;">
-                        <h2 style="margin: 20px 0; margin-bottom: 10px; width: 95%; padding-bottom: 5px; border-bottom: solid 1px #000;">Anime Name</h2>
+                        <h2 style="margin: 20px 0; margin-bottom: 10px; width: 95%; padding-bottom: 5px; border-bottom: solid 1px #000;">
+                            {{ anime_details.name }}</h2>
                     </div>
                     <div style="margin: 0 20px;">
-                        Episode List
+                        {% for episode in episodes %}
+                            <a href="/">{{ episode }}</a>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
