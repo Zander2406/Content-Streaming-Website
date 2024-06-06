@@ -42,3 +42,9 @@ def place_colon(string1):
 def season_tag(season, year):
     result = f"{str(season.lower())}-{str(year)}-anime"
     return result
+
+
+@register.simple_tag
+def split(string):
+    string = string.split(" ")[-1]
+    return string

@@ -114,8 +114,16 @@
                             {{ anime_details.name }}</h2>
                     </div>
                     <div style="margin: 0 20px;">
+                        <ul class="related-episodes">
+                            <li>
+                                <a href="/{% episodebuilder episode.anime.name_slug episode.name %}">
+                                    <div class="name"> {{ split episode.name }} </div>
+                                    <div class="lang"> SUB </div>
+                                </a>
+                            </li>
+                        </ul>
                         {% for episode in episodes %}
-                            <a href="/">{{ episode }}</a>
+                            <a href="/{% episodebuilder episode.anime.name_slug episode.name %}">{{ episode.name }}</a>
                         {% endfor %}
                     </div>
                 </div>
