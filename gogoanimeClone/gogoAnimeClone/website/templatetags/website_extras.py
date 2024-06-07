@@ -44,7 +44,7 @@ def season_tag(season, year):
     return result
 
 
-@register.simple_tag
+@register.filter()
 def split(string):
     string = string.split(" ")[-1]
     return string

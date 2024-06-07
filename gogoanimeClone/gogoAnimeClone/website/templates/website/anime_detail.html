@@ -115,16 +115,15 @@
                     </div>
                     <div style="margin: 0 20px;">
                         <ul class="related-episodes">
-                            <li>
-                                <a href="/{% episodebuilder episode.anime.name_slug episode.name %}">
-                                    <div class="name"> {{ split episode.name }} </div>
-                                    <div class="lang"> SUB </div>
-                                </a>
-                            </li>
+                            {% for episode in episodes %}
+                                <li>
+                                    <a href="/{% episodebuilder episode.anime.name_slug episode.name %}">
+                                        <div class="name"> {{ episode.name|split }} </div>
+                                        <div class="lang"> {{ episode.anime.lang.lang }} </div>
+                                    </a>
+                                </li>
+                            {% endfor %}
                         </ul>
-                        {% for episode in episodes %}
-                            <a href="/{% episodebuilder episode.anime.name_slug episode.name %}">{{ episode.name }}</a>
-                        {% endfor %}
                     </div>
                 </div>
             </div>
