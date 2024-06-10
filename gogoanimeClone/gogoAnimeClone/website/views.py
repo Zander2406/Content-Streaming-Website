@@ -27,8 +27,6 @@ class AnimeView(View):
                      'genres': GenreMap.objects.filter(anime__name_slug=anime_name),
                      'episodes': Episodes.objects.filter(anime__name_slug=anime_name),
                      }
-        test = Episodes.objects.filter(anime__name_slug=anime_name)[0]
-        print(test.anime.lang.lang)
         return render(request, 'website/anime_detail.html', page_data)
 
 

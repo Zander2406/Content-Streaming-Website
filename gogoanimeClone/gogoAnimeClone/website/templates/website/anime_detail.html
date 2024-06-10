@@ -72,6 +72,45 @@
         .separator {
             margin-bottom: 26px;
         }
+        .related-episodes {
+            padding-left: 0;
+        }
+        .related-episodes a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 13px;
+        }
+        .related-episodes .name {
+            float: left;
+            width: 60%;
+            padding: 8px 0;
+            font-size: 11px;
+        }
+        .related-episodes .lang {
+            float: right;
+            color: #737373;
+            padding: 8px 0;
+            font-size: 11px;
+        }
+        .related-episodes li:nth-child(7n+1) {
+            margin-left: 0;
+        }
+        .related-episodes li {
+            float: left;
+            position: relative;
+            list-style: none;
+            margin: 5px 0;
+            margin-left: 1.5%;
+            width: 13%;
+        }
+        .related-episodes li a {
+            color: #fff;
+            display: block;
+            background-color: #363636;
+            width: 100%;
+            float: left;
+            padding: 0 8px;
+        }
     </style>
 {% endblock %}
 
@@ -113,12 +152,12 @@
                         <h2 style="margin: 20px 0; margin-bottom: 10px; width: 95%; padding-bottom: 5px; border-bottom: solid 1px #000;">
                             {{ anime_details.name }}</h2>
                     </div>
-                    <div style="margin: 0 20px;">
+                    <div style="padding: 0 20px 20px 20px; overflow: hidden; max-height: 10px;">
                         <ul class="related-episodes">
                             {% for episode in episodes %}
                                 <li>
                                     <a href="/{% episodebuilder episode.anime.name_slug episode.name %}">
-                                        <div class="name"> {{ episode.name|split }} </div>
+                                        <div class="name"> EP {{ episode.name|split }} </div>
                                         <div class="lang"> {{ episode.anime.lang.lang }} </div>
                                     </a>
                                 </li>
