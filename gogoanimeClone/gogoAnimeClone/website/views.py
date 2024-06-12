@@ -41,4 +41,3 @@ class GenreView(View):
     def get(self, request, genre):
         return render(request, 'website/play_anime.html')
 
-# Create your views here.

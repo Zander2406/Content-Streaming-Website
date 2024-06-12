@@ -5,6 +5,7 @@
 {% block head %}
     {{ block.super }}
     <title> {{ anime_details.name }} at Gogoanime</title>
+
     <style>
         html, body {
             font-size: 13px;
@@ -111,6 +112,12 @@
             float: left;
             padding: 0 8px;
         }
+        .related-episodes li a:hover {
+            background-color: #ffc119;
+        }
+        .info a:hover {
+            color: #ffc119;
+        }
     </style>
 {% endblock %}
 
@@ -131,7 +138,7 @@
                         <div style="margin-right: 20px;">
                             <h1 class="heading-info">{{ anime_details.name }}</h1>
                             <div style="padding: 5px"></div>
-                            <p class="info"><span class="info-category">Type: </span><a href="/">{{ anime_details.type.type }}</a></p>
+                            <p class="info"><span class="info-category">Type: </span><a href="/sub-category/{% namebuilder anime_details.type.type %}">{{ anime_details.type.type }}</a></p>
                             <p class="info"><span class="info-category">Plot Summary: </span><div class="plain-text">{{ anime_details.summary }}</div></p>
                             <p class="info"><span class="info-category">Genre: </span>
                                 {% for genre in genres %}
@@ -152,7 +159,7 @@
                         <h2 style="margin: 20px 0; margin-bottom: 10px; width: 95%; padding-bottom: 5px; border-bottom: solid 1px #000;">
                             {{ anime_details.name }}</h2>
                     </div>
-                    <div style="padding: 0 20px 20px 20px; overflow: hidden; max-height: 10px;">
+                    <div style="padding: 0 20px 20px 20px; overflow: hidden;">
                         <ul class="related-episodes">
                             {% for episode in episodes %}
                                 <li>
@@ -173,13 +180,13 @@
 
             <div id="advertisement-box" class="separator">
 
-                <div id="advertisement-box-header" class="all-headers">
+                <div id="advertisement-box-header" class="all-headers" style="width: 300px;">
                     <h2 id="advertisement-box-nav" class="header-nav">
                         <span>ADVERTISEMENT</span>
                     </h2>
                 </div>
-                <div id="advertisement-box-content" class="border-bottom border-start border-end">
-                    Advertisement Content
+                <div id="advertisement-box-content" class="border-bottom border-start border-end" style="width: 300px; height: 250px;">
+                    <img src="{% static 'website/ad-banner.jpg' %}" alt="Ad Banner" width="300px" height="250px">
                 </div>
 
             </div>
