@@ -23,9 +23,12 @@ class MainView(View):
 class AnimeView(View):
 
     def get(self, request, anime_name):
+        recent_releases = Episodes.objects.all()
         page_data = {'anime_details': Anime.objects.filter(name_slug=anime_name)[0],
                      'genres': GenreMap.objects.filter(anime__name_slug=anime_name),
                      'episodes': Episodes.objects.filter(anime__name_slug=anime_name),
+                     'seasons': Season.objects.all()[::-1],
+                     'latest_episodes': recent_releases[len(recent_releases) - 60:][::-1],
                      }
         return render(request, 'website/anime_detail.html', page_data)
 
