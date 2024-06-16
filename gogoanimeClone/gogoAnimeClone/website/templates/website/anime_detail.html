@@ -137,6 +137,17 @@
         #seasons-navbar ul li a:hover {
             color: #fff;
         }
+        .recent-release li {
+            list-style: none;
+        }
+        .recent-release li a {
+            color: #ffc119;
+            text-align: left;
+            text-decoration: none;
+        }
+        .recent-release li a:hover {
+            color: #fff;
+        }
     </style>
 {% endblock %}
 
@@ -213,11 +224,20 @@
             <div id="recent-release-box" class="separator">
                 <div id="recent-release-header" class="all-headers">
                     <h2 id="recent-release-nav" class="header-nav">
-                        <span>ADVERTISEMENT</span>
+                        <span style="text-transform: uppercase;">Recent Release</span>
                     </h2>
                 </div>
-                <div id="recent-release-content" class="border-bottom border-start border-end">
-                    Advertisement Content
+                <div id="recent-release-content" class="border-bottom border-start border-end" style="height: 1000px !important; overflow: hidden; overflow-y: auto; padding-top: 10px;">
+                    <ul class="recent-release">
+                        {% for episode in latest_episodes %}
+                            <li>
+                                <a href="/{% episodebuilder episode.anime.name_slug episode.name %}">
+                                    {{ episode.anime.name }}
+                                </a>
+                                <a href="/{% episodebuilder episode.anime.name_slug episode.name %}"> <p style="color: #fdfcfc; font-size: 12px;"> {{ episode.name }} </p> </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </div>
             </div>
 

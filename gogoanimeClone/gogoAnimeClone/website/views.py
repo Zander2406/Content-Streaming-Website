@@ -36,6 +36,13 @@ class AnimeView(View):
 class WatchView(View):
 
     def get(self, request, anime_episode):
+        name_components = anime_episode.split('-')
+        episode_number = name_components[-2:]
+        episode_number = '-'.join(episode_number)
+        del name_components[-2:]
+        anime_name = name_components
+        anime_name = '-'.join(anime_name)
+        episode = Episodes.objects.filter(anime__name_slug=anime_name)
         return render(request, 'website/play_anime.html')
 
 
