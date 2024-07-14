@@ -1,11 +1,12 @@
 {% extends "website/base.html" %}
 {% load static %}
+{% load website_extras %}
 
 {% block head %}
 
     {{ block.super }}
 
-    <title>Watch Anime Name</title>
+    <title>Watch {{ current_episode.anime.name }} {{ current_episode.name }} English {{ current_episode.anime.lang.lang }}bed at Gogoanime</title>
     <style>
         html, body {
          font-size: 13px;
@@ -168,9 +169,9 @@
                     </div>
                     <div id="media-player-content" class="border-bottom border-start border-end">
                         <div style="margin-right: 20px;">
-                            <h1 class="heading-info">Anime Name Subbed at Gogoanime Episode 10</h1>
-                            <p id="anime-category" class="info"><span class="info-category">Category: </span><a href="/">Category</a></p>
-                            <p id="anime-info" class="info"><span class="info-category">Anime Info: </span><a href="/">Anime Info</a></p>
+                            <h1 class="heading-info">{{ current_episode.anime.name }} {{ current_episode.name }} English {{ current_episode.anime.lang.lang }}bed at Gogoanime</h1>
+                            <p id="anime-category" class="info"><span class="info-category">Category: </span><a href="/sub-category/{% namebuilder current_episode.anime.type.type %}">{{ current_episode.anime.type.type }}</a></p>
+                            <p id="anime-info" class="info"><span class="info-category">Anime Info: </span><a href="/category/{{ current_episode.anime.name_slug }}">{{ current_episode.anime.name }}</a></p>
                         </div>
                         <div id="anime-watch-note">
                             Please,
@@ -185,13 +186,13 @@
 
                         <div id="episode-navigation">
                             <div id="episode-navigation-l">
-                                {% if True %}
-                                    <a href="content"> << Ep Name </a>
+                                {% if prev_episode %}
+                                    <a href="/{% episodebuilder prev_episode.anime.name_slug prev_episode.name %}"> << {{ prev_episode.anime.name }} {{ prev_episode.name }} </a>
                                 {% endif %}
                             </div>
                             <div id="episode-navigation-r">
-                                {% if True %}
-                                    <a href="content"> Ep Name >> </a>
+                                {% if next_episode %}
+                                    <a href="/{% episodebuilder next_episode.anime.name_slug next_episode.name %}"> {{ next_episode.anime.name }} {{ next_episode.name }} >> </a>
                                 {% endif %}
                             </div>
                         </div>

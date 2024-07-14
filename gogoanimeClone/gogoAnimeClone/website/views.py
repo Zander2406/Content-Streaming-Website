@@ -38,12 +38,28 @@ class WatchView(View):
     def get(self, request, anime_episode):
         name_components = anime_episode.split('-')
         episode_number = name_components[-2:]
-        episode_number = '-'.join(episode_number)
+        episode_number[0] = episode_number[0].capitalize()
+        episode_number = ' '.join(episode_number)
         del name_components[-2:]
         anime_name = name_components
         anime_name = '-'.join(anime_name)
-        episode = Episodes.objects.filter(anime__name_slug=anime_name)
-        return render(request, 'website/play_anime.html')
+        episodes = Episodes.objects.filter(anime__name_slug=anime_name)
+        current_episode = None
+        prev_episode = None
+        next_episode = None
+        for i in range(len(episodes)):
+            if episodes[i].name == episode_number:
+                current_episode = episodes[i]
+                if i - 1 >= 0:
+                    prev_episode = episodes[i - 1]
+                if i + 1 < len(episodes):
+                    next_episode = episodes[i + 1]
+        page_data = {'related_episodes': episodes,
+                     'current_episode': current_episode,
+                     'prev_episode': prev_episode,
+                     'next_episode': next_episode,
+                     }
+        return render(request, 'website/play_anime.html', page_data)
 
 
 class GenreView(View):
