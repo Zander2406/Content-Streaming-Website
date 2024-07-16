@@ -150,6 +150,12 @@
             padding: 8px 0;
             font-size: 11px;
         }
+        #related-episodes .lang {
+            float: right;
+            color: #737373;
+            padding: 8px 0;
+            font-size: 11px;
+        }
     </style>
 
 {% endblock %}
@@ -216,30 +222,16 @@
                     <div style="clear: both;"></div>
 
                     <div id="related-episodes-content" class="border-bottom border-start border-end">
-                        <div id="load-eps" style="position: relative; right: 10px;">
+                        <div id="load-eps" style="position: relative; right: 10px; padding: 0 20px 20px 20px; overflow: hidden;">
                             <ul id="related-episodes">
-                                {% for list_item in list %}
+                                {% for episode in related_episodes %}
                                     <li>
-                                        <a href="episode">
-                                            <div class="name">
-                                                <span>EP</span>  {}
-                                            </div>
-                                            <div class="divider"></div>
-                                            <div class="type">{}</div>
+                                        <a href="/{% episodebuilder episode.anime.name_slug episode.name %}">
+                                            <div class="name"> EP {{ episode.name|split }} </div>
+                                            <div class="lang"> {{ episode.anime.lang.lang }} </div>
                                         </a>
                                     </li>
                                 {% endfor %}
-
-<!--                                <li>-->
-<!--                                    <a href="episode">-->
-<!--                                        <div class="name">-->
-<!--                                            <span>EP</span>  1-->
-<!--                                        </div>-->
-<!--                                        <div class="divider"></div>-->
-<!--                                        <div class="type">SUB</div>-->
-<!--                                    </a>-->
-<!--                                </li>-->
-
                             </ul>
                         </div>
                     </div>
