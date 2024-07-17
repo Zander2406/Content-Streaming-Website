@@ -44,6 +44,7 @@ class WatchView(View):
         anime_name = name_components
         anime_name = '-'.join(anime_name)
         episodes = Episodes.objects.filter(anime__name_slug=anime_name)
+        recent_releases = Episodes.objects.all()
         current_episode = None
         prev_episode = None
         next_episode = None
@@ -58,6 +59,8 @@ class WatchView(View):
                      'current_episode': current_episode,
                      'prev_episode': prev_episode,
                      'next_episode': next_episode,
+                     'latest_episodes': recent_releases[len(recent_releases) - 60:][::-1],
+                     'seasons': Season.objects.all()[::-1],
                      }
         return render(request, 'website/play_anime.html', page_data)
 

@@ -156,6 +156,39 @@
             padding: 8px 0;
             font-size: 11px;
         }
+        #related-episodes li a:hover {
+            background-color: #ffc119;
+        }
+        .recent-release li {
+            list-style: none;
+        }
+        .recent-release li a {
+            color: #ffc119;
+            text-align: left;
+            text-decoration: none;
+        }
+        .recent-release li a:hover {
+            color: #fff;
+        }
+        #seasons-navbar ul {
+            margin: 0;
+            padding: 0;
+        }
+        #seasons-navbar ul li {
+            list-style: none;
+            padding: 2px 0;
+            color: #ffc119;
+        }
+        #seasons-navbar ul li a {
+            color: #ffc119;
+            text-align: left !important;
+            white-space: nowrap;
+            overflow: hidden;
+            text-decoration: none;
+        }
+        #seasons-navbar ul li a:hover {
+            color: #fff;
+        }
     </style>
 
 {% endblock %}
@@ -265,8 +298,17 @@
                             <span>Recent Release</span>
                         </h2>
                     </div>
-                    <div id="recent-release-content" class="border-bottom border-start border-end" style="width: 300px;">
-                        Recent Release Content
+                    <div id="recent-release-content" class="border-bottom border-start border-end" style="height: 1000px !important; overflow: hidden; overflow-y: auto; padding-top: 10px;">
+                        <ul class="recent-release">
+                            {% for episode in latest_episodes %}
+                                <li>
+                                    <a href="/{% episodebuilder episode.anime.name_slug episode.name %}">
+                                        {{ episode.anime.name }}
+                                    </a>
+                                    <a href="/{% episodebuilder episode.anime.name_slug episode.name %}"> <p style="color: #fdfcfc; font-size: 12px;"> {{ episode.name }} </p> </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
                     </div>
                 </div>
 
@@ -278,8 +320,22 @@
                         </h2>
                     </div>
                     <div id="recent-seasons-content" class="border-bottom border-start border-end" style="padding: 10px 0; width: 300px;">
-                        <nav id="seasons-navbar">
-                            Anime Seasons Nav
+                        <nav id="seasons-navbar" style="padding-left: 14px;">
+                            <ul>
+                                {% regroup seasons by year as seasons_list %}
+                                {% for season in seasons_list|slice:":11" %}
+                                    <li>
+                                        <span style="color:#898989;">Anime {{ season.grouper.year }}:</span>
+                                        {% for item in season.list %}
+                                            {% if forloop.revcounter0 == 0 %}
+                                                <a style="display: inline;" href="/sub-category/{% season_tag item.season season.grouper.year %}" title="Season Anime">{{ item.season }}</a>
+                                            {% else %}
+                                                <a style="display: inline;" href="/sub-category/{% season_tag item.season season.grouper.year %}">{{ item.season }}</a> |
+                                            {% endif %}
+                                        {% endfor %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
                         </nav>
                     </div>
 
