@@ -67,6 +67,18 @@ class WatchView(View):
 
 class GenreView(View):
 
-    def get(self, request, genre):
+    def get(self, request, genre_name):
         return render(request, 'website/play_anime.html')
+
+
+class AnimeListView(View):
+
+    def get(self, request):
+        recent_releases = Episodes.objects.all()
+        page_data = {
+            'anime_list': Anime.objects.all().order_by('name'),
+            'latest_episodes': recent_releases[len(recent_releases) - 60:][::-1],
+            'seasons': Season.objects.all()[::-1],
+        }
+        return render(request, 'website/anime_list.html', page_data)
 
