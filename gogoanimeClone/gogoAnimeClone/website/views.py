@@ -68,7 +68,16 @@ class WatchView(View):
 class GenreView(View):
 
     def get(self, request, genre_name):
-        return render(request, 'website/play_anime.html')
+        recent_releases = Episodes.objects.all()
+        page_data = {
+            'anime_list': GenreMap.objects.filter(genre__genre=genre_name),
+            'latest_episodes': recent_releases[len(recent_releases) - 60:][::-1],
+            'seasons': Season.objects.all()[::-1],
+            'genre': genre_name,
+        }
+        test = GenreMap.objects.filter(genre__genre=genre_name)
+        print(test)
+        return render(request, 'website/genre_view.html', page_data)
 
 
 class AnimeListView(View):

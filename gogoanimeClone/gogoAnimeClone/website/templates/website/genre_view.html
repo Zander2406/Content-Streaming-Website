@@ -5,14 +5,226 @@
 {% block head %}
 
     {{ block.super }}
-    <title> List All Anime at Gogoanime </title>
+    <title> List genre {{ genre }} at Gogoanime </title>
+    <style>
+        html, body {
+            font-size: 13px;
+            font-family: myFirstFont, MyFont_IE, Tahoma, Geneva, sans-serif;
+        }
+        .content, .left, .right {
+            background-color: #1b1b1b;
+        }
+        .left {
+            float: left;
+            width: 68%;
+            padding: 10px;
+        }
+        .right {
+            float: right;
+            width: 340px;
+            padding-right: 30px;
+            padding-top: 10px;
+        }
+        .all-headers {
+            background-color: #ffc119;
+            height: 40px;
+            position: relative;
+        }
+        .header-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 10px;
+            font-size: 14px;
+        }
+        .separator {
+            margin-bottom: 26px;
+        }
+        #recent-release-nav a {
+            text-decoration: none;
+            color: #FFF;
+        }
+        ul.items {
+            margin-top: 20px;
+        }
+        ul.items li:nth-child(4n+1) {
+            margin-left: 0;
+        }
+        ul.items li {
+            float: left;
+            position: relative;
+            margin-left: 1.8867%;
+            width: 22.6%;
+            height: 270px;
+            text-align: center;
+            list-style: none;
+            margin-bottom: 25px;
+            vertical-align: top;
+        }
+        ul.items li .img a {
+            position: relative;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        ul.items li .img img {
+            width: 100%;
+            max-width: 100%;
+            height: 217px;
+        }
+        ul.items li p.anime-name a {
+            text-decoration: none;
+            color: #ffc119;
+            font-size: 13px;
+            font-family: mySecondFont;
+        }
+        ul.items li p.anime-name a:hover {
+            color: #fff;
+        }
+        .recent-release li {
+            list-style: none;
+        }
+        .recent-release li a {
+            color: #ffc119;
+            text-align: left;
+            text-decoration: none;
+        }
+        .recent-release li a:hover {
+            color: #fff;
+        }
+        #seasons-navbar ul {
+            margin: 0;
+            padding: 0;
+        }
+        #seasons-navbar ul li {
+            list-style: none;
+            padding: 2px 0;
+            color: #ffc119;
+        }
+        #seasons-navbar ul li a {
+            color: #ffc119;
+            text-align: left !important;
+            white-space: nowrap;
+            overflow: hidden;
+            text-decoration: none;
+        }
+        #seasons-navbar ul li a:hover {
+            color: #fff;
+        }
+    </style>
 
 {% endblock %}
 
 {% block body %}
 
     <section class="content" style="float: left; width: 100%;">
-        <section> Main Panel </section>
+
+        <section class="left">
+
+            <div id="genre-list" class="left-elements separator">
+
+                <div id="genre-list-header" class="all-headers">
+                    <h2 id="genre-list-nav" class="header-nav">
+                        GENRE {{ genre }}
+                    </h2>
+                </div>
+                <div id="genre-list-content" class="border-bottom border-start border-end" style="display: block; height: 1200px; overflow-y: auto;">
+                    <ul class="items">
+                        {% for anime in anime_list %}
+                            <li>
+                                <div class="img">
+                                    <a href="/{% episodebuilder anime.anime.name_slug episode.name %}">
+                                        <img src="{% static 'website/anime_banner.png' %}">
+                                    </a>
+                                </div>
+                                <p class="anime-name" style="position: relative; padding-top: 8px; margin-bottom: 5px;">
+                                    <a href="/{% episodebuilder episode.anime.name_slug episode.name %}">{{ episode.anime.name }}</a>
+                                </p>
+                                <p class="episode" style="margin-bottom: 0;">
+                                    {{ episode.name }}
+                                </p>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="right">
+
+
+            <div id="advertisement-box" class="separator" style="margin-left: 15px;">
+
+                <div id="advertisement-box-header" class="all-headers" style="width: 300px;">
+                    <h2 id="advertisement-box-nav" class="header-nav">
+                        <span>ADVERTISEMENT</span>
+                    </h2>
+                </div>
+                <div id="advertisement-box-content" class="border-bottom border-start border-end" style="width: 300px; height: 250px;">
+                    <img src="{% static 'website/ad-banner.jpg' %}" alt="Ad Banner" width="300px" height="250px">
+                </div>
+
+            </div>
+
+
+            <div id="recent-release-box" class="separator" style="margin-left: 15px;">
+                    <div id="recent-release-header" class="all-headers" style="width: 300px;">
+                        <h2 id="recent-release-nav" class="header-nav">
+                            <span>Recent Release</span>
+                        </h2>
+                    </div>
+                    <div id="recent-release-content" class="border-bottom border-start border-end" style="height: 1000px !important; overflow: hidden; overflow-y: auto; padding-top: 10px;">
+                        <ul class="recent-release">
+                            {% for episode in latest_episodes %}
+                                <li>
+                                    <a href="/{% episodebuilder episode.anime.name_slug episode.name %}">
+                                        {{ episode.anime.name }}
+                                    </a>
+                                    <a href="/{% episodebuilder episode.anime.name_slug episode.name %}"> <p style="color: #fdfcfc; font-size: 12px;"> {{ episode.name }} </p> </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+
+            <div id="recent-seasons" class="separator" style="margin-left: 15px;">
+
+                <div id="recent-seasons-header" class="all-headers" style="width: 300px;">
+                    <h2 id="recent-seasons-nav" class="header-nav">
+                        <span>SEASON</span>
+                    </h2>
+                </div>
+                <div id="recent-seasons-content" class="border-bottom border-start border-end" style="padding: 10px 0; width: 300px;">
+                    <nav id="seasons-navbar" style="padding-left: 14px;">
+                        <ul>
+                            {% regroup seasons by year as seasons_list %}
+                            {% for season in seasons_list|slice:":11" %}
+                                <li>
+                                    <span style="color:#898989;">Anime {{ season.grouper.year }}:</span>
+                                    {% for item in season.list %}
+                                        {% if forloop.revcounter0 == 0 %}
+                                            <a style="display: inline;" href="/sub-category/{% season_tag item.season season.grouper.year %}" title="Season Anime">{{ item.season }}</a>
+                                        {% else %}
+                                            <a style="display: inline;" href="/sub-category/{% season_tag item.season season.grouper.year %}">{{ item.season }}</a> |
+                                        {% endif %}
+                                    {% endfor %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+
+
+        </section>
     </section>
 
 {% endblock %}
