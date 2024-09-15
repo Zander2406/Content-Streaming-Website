@@ -68,6 +68,8 @@ class WatchView(View):
 class GenreView(View):
 
     def get(self, request, genre_name):
+        genre_name = genre_name.replace("-", " ")
+        genre_name = genre_name.title()
         recent_releases = Episodes.objects.all()
         page_data = {
             'anime_list': GenreMap.objects.filter(genre__genre=genre_name),
@@ -75,8 +77,12 @@ class GenreView(View):
             'seasons': Season.objects.all()[::-1],
             'genre': genre_name,
         }
-        test = GenreMap.objects.filter(genre__genre=genre_name)
+        test3 = Genre.objects.filter(genre=genre_name).values()
+        test = GenreMap.objects.filter(id=17).values()
+        test2 = GenreMap.objects.filter(id=test3[0]['id']).values()
         print(test)
+        print(test2)
+        print(test3)
         return render(request, 'website/genre_view.html', page_data)
 
 
